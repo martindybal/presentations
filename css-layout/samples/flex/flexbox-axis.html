@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Flexbox flex-direction</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+        #sample-html {
+            display: flex;
+        }
+
+        .products {
+            border: green .1em dashed;
+        }
+
+        .product {
+            padding: .5em;
+        }
+
+            .product h2 {
+                font-size: 1em;
+            }
+    </style>
+    <style id="sample-css">
+        .products {
+            display: flex;
+        }
+
+        .products--row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .products--column {
+            flex-direction: column;
+        }
+
+        .products--column-reverse {
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1>Flexbox flex-direction</h1>
+    <div id="sample-html">
+        <div>
+            <h3>row</h3>
+            <div class="products">
+                <div class="product">
+                    <h2>DotVVM Framework</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Dynamic Data</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Free)</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Business Pack</h2>
+                </div>
+                <div class="product">
+                    <h2>Bootstrap for DotVVM</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Pro)</h2>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>column</h3>
+            <div class="products products--column">
+                <div class="product">
+                    <h2>DotVVM Framework</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Dynamic Data</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Free)</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Business Pack</h2>
+                </div>
+                <div class="product">
+                    <h2>Bootstrap for DotVVM</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Pro)</h2>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>row-reverse</h3>
+            <div class="products products--row-reverse">
+                <div class="product">
+                    <h2>DotVVM Framework</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Dynamic Data</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Free)</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Business Pack</h2>
+                </div>
+                <div class="product">
+                    <h2>Bootstrap for DotVVM</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Pro)</h2>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>column-reverse</h3>
+            <div class="products products--column-reverse">
+                <div class="product">
+                    <h2>DotVVM Framework</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Dynamic Data</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Free)</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM Business Pack</h2>
+                </div>
+                <div class="product">
+                    <h2>Bootstrap for DotVVM</h2>
+                </div>
+                <div class="product">
+                    <h2>DotVVM for Visual Studio (Pro)</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>

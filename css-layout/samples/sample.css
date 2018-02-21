@@ -1,0 +1,10 @@
+﻿.sample--in-iframe .sample__title {
+    display: none;
+}
+
+.product {
+    background-color: whitesmoke;
+    border: 1px solid deepskyblue;
+    margin: 0 1em 2em 1em;
+    padding: 1em;
+}

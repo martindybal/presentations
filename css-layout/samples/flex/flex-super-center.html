@@ -1,0 +1,46 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Flex - cetrování</title>
+    <link href="../sample.css" rel="stylesheet" />
+    
+    <style>
+        .sample {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            height: calc(100vh - 1em);
+        }
+
+        #sample-html {
+            display: grid;
+        }
+    </style>
+
+    <style id="sample-css">
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 15em;
+            height: 15em;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+<div id="sample-html">
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</div>
+
+    <script src="../sample.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/white.css">
+    <link rel="stylesheet" href="../reveal/lib/css/highlightjs-vs.css" />
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown="slide-01.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+
+            <section>
+                <section>
+                    Vertical Slide 1
+
+                    <aside class="notes">
+                        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                    </aside>
+                </section>
+                <section>Vertical Slide 2</section>
+            </section>
+            <section>
+                <section>Vertical Slide 1</section>
+                <section>Vertical Slide 2</section>
+            </section>
+        </div>
+    </div>
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+    <script src="../reveal/plugin/markdown/marked.js"></script>
+    <script src="../reveal/plugin/markdown/markdown.js"></script>
+    <script src="../reveal/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            loop: false,
+            mouseWheel: true,
+            theme: Reveal.getQueryHash().theme || 'default',
+            transition: Reveal.getQueryHash().transition || 'default',
+            dependencies: [
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+</html>

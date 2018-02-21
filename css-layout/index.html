@@ -1,0 +1,242 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/white.css">
+    <link rel="stylesheet" href="../reveal/lib/css/highlightjs-vs.css" />
+    <link href="plugins/code-sample/code-sample.css" rel="stylesheet" />
+
+    <style>
+        .author {
+            position: absolute;
+            bottom: 1em;
+            left: 1em;
+        }
+
+        .section__content-wrapper {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                Martin Dybal
+                <h1>CSS Layout</h1>
+                <h4>2018</h4>
+                <ul>
+                    <li>Minulost</li>
+                    <li>Nové možnosti css</li>
+                    <li>Flex</li>
+                    <li>Grid</li>
+                    <li>Dotvvm - flex controls</li>
+                </ul>
+            </section>
+            <section>
+                <section data-markdown="samples/hacking/hacking.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-sample-url="samples/float/float-text-circle.html"></section>
+                <section data-sample-url="samples/hacking/items-grid.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-real-data.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-real-data-inline.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-real-data-table.html"></section>
+            </section>
+            <section>
+                <section>
+                    <h2>Verzování CSS</h2>
+                    <ul>
+                        <li>
+                            <strong>CSS 1</strong>
+                            <ul><li>1996</li></ul>
+                        </li>
+                        <li>
+                            <strong>CSS 2</strong>
+                            <ul><li>1998</li></ul>
+                        </li>
+                        <li>
+                            <strong>CSS 3</strong>
+                            <ul>
+                                <li>Přechod z monolityckého na modulární systém 1999</li>
+                                <li>
+                                    Stávající specifikace se označila jako {Jméno modulu} level 3
+                                    <ul><li>Například: display Level 3</li></ul>
+                                </li>
+                                <li>
+                                    Zmatek je u modulů, které nebyli součástí CSS2
+                                    <ul><li>Například: Grid Level 1</li></ul>
+                                    <ul><li>display Level 4, obsahuje grid | flex ...</li></ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>CSS 4</strong>
+                            <ul>
+                                <li>Nebude</li>
+                                <li><a href="http://cssnext.io" target="_blank">cssnext - Use tomorrow's CSS syntax, today</a></li>
+                            </ul>
+                        </li>
+                        <li>Od 2013 je specifikace na <a href="https://github.com/w3c/csswg-drafts" target="_blank">github.com/w3c/csswg-drafts</a> </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Nové css vlastnosti</h2>
+                    <ul>
+                        <li>
+                            <strong>Column</strong>
+                            <ul><li>caniuse: 96.48%</li></ul>
+                        </li>
+                        <li>
+                            <strong>Flexbox</strong>
+                            <ul><li>caniuse: 97.26%</li></ul>
+                        </li>
+                        <li>
+                            <strong>Grid</strong>
+                            <ul><li>caniuse: 96.31%</li></ul>
+                        </li>
+                    </ul>
+                </section>
+                <section data-sample-url="samples/column/column-count.html"></section>
+                <section data-sample-url="samples/column/column-count-text.html"></section>
+                <section data-sample-url="samples/column/column-width.html"></section>
+                <section data-markdown="samples/flex/flex.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section>
+                    <h2 id="flex-api">Flex - api</h2>
+                    <div class="section__content-wrapper">
+                        <div class="section__content__column">
+                            <ul>
+                                <li>
+                                    Container<ul>
+                                        <li>display: flex | inline-flex;</li>
+                                        <li>flex-direction</li>
+                                        <li>flex-wrap</li>
+                                        <li>flex-flow</li>
+                                        <li>justify-content</li>
+                                        <li>align-items</li>
+                                        <li>align-content</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="section__content__column">
+                            <ul>
+                                <li>
+                                    Childs<ul>
+                                        <li>flex-grow</li>
+                                        <li>flex-shrink</li>
+                                        <li>flex-basis</li>
+                                        <li>flex</li>
+                                        <li>order</li>
+                                        <li>align-self</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section data-sample-url="samples/flex/flexbox.html"></section>
+                <section data-sample-url="samples/flex/flexbox-wrap.html"></section>
+                <section data-sample-url="samples/flex/flexbox-flex.html"></section>
+                <section data-sample-url="samples/flex/flexbox-items-grid.html"></section>
+                <section data-markdown="samples/flex/flex-axis.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section>
+                    <iframe src="samples/flex/flexbox-axis.html" width="100%" height="100%" frameBorder="0"></iframe>
+                </section>
+                <section data-sample-url="samples/flex/flexbox-fokus.html"></section>
+                <section data-markdown="samples/grid/grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section>
+                    <h2 id="flex-api">Grid - api</h2>
+                    <div class="section__content-wrapper">
+                        <div class="section__content__column">
+                            <ul>
+                                <li>
+                                    Container<ul>
+                                        <li>display: grid | inline-grid | subgrid;</li>
+                                        <li>grid-template-columns</li>
+                                        <li>grid-template-rows</li>
+                                        <li>grid-template-areas</li>
+                                        <li>grid-template</li>
+                                        <li>grid-column-gap (column-gap)</li>
+                                        <li>grid-row-gap (row-gap)</li>
+                                        <li>grid-gap (gap)</li>
+                                        <li>justify-items</li>
+                                        <li>align-items</li>
+                                        <li>justify-content</li>
+                                        <li>align-content</li>
+                                        <li>grid-auto-columns</li>
+                                        <li>grid-auto-rows</li>
+                                        <li>grid</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="section__content__column">
+                            <ul>
+                                <li>
+                                    Childs<ul>
+                                        <li>grid-column-start</li>
+                                        <li>grid-column-end</li>
+                                        <li>grid-row-start</li>
+                                        <li>grid-row-end</li>
+                                        <li>grid-column</li>
+                                        <li>grid-row</li>
+                                        <li>grid-area</li>
+                                        <li>justify-self</li>
+                                        <li>align-self</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section data-sample-url="samples/grid/grid-template-column.html"></section>
+                <section data-sample-url="samples/grid/grid-template-column-responsive.html"></section>
+                <section data-sample-url="samples/grid/grid-gap.html"></section>
+                <section data-sample-url="samples/grid/grid-basics.html"></section>
+                <section data-sample-url="samples/grid/grid-basics-areas.html"></section>
+                <section data-sample-url="samples/grid/grid-basics-areas-responsive.html"></section>
+                <section>
+                    <iframe src="samples/grid/grid-item-position.html" width="100%" height="100%" frameBorder="0"></iframe>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Vychtávky s Flexem a Gridem</h2>
+                </section>
+                <section data-sample-url="samples/flex/flex-super-center.html"></section>
+                <section data-sample-url="samples/grid/grid-layout.html"></section>
+                <section data-sample-url="samples/grid/grid-layout-rtl.html"></section>
+                <section data-sample-url="samples/grid/grid-auto-placemnet.html"></section>
+                <section data-sample-url="samples/grid/grid-photogallery.html"></section>
+
+            </section>
+            <section>
+                Martin Dybal
+                <h1>CSS Layout</h1>
+                <h4>2018</h4>
+                <ul>
+                    <li>
+                        Zdroje
+                        <ul>
+                            <li><a target="_blank" href="https://abookapart.com/products/the-new-css-layout">The New CSS Layout, Rachel Andrew</a></li>
+                            <li><a target="_blank" href="https://www.vzhurudolu.cz/ebook">Vzhůru do CSS3, Martin Michálek</a></li>
+                            <li><a target="_blank" href="http://shoptalkshow.com">Shop talk - podcast</a></li>
+                            <li><a target="_blank" href="https://www.pluralsight.com/search?q=Hands-on%20Responsive%20Web%20Design&categories=all">PluralSight, Hands-on Responsive Web Design</a></li>
+                            <li><a target="_blank" href="http://csslayout.news">CSS Layout News - mail list</a></li>
+                            <li><a target="_blank" href="https://gridbyexample.com/examples/">Grid by Example</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="http://www.flexboxdefense.com">Flexbox defense</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+    <script src="../reveal/plugin/markdown/marked.js"></script>
+    <script src="../reveal/plugin/markdown/markdown.js"></script>
+    <script src="../reveal/plugin/highlight/highlight.js"></script>
+    <script src="../reveal/plugin/notes/notes.js"></script>
+    <script src="../reveal-initialize.js"></script>
+    <script src="plugins/code-sample/code-sample.js"></script>
+</body>
+</html>
