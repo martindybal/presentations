@@ -1,0 +1,71 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Flex - priorita prvků</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+        .item {
+            background-color: deepskyblue;
+            color: white;
+            font-size: 3em;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.1em;
+        }
+    </style>
+
+    <style id="sample-css">
+        .items {
+            display: flex;
+        }
+
+        .item {
+            flex-grow: 1;
+        }
+
+        .p1 {
+            order: -1;
+            flex-grow: 2;
+        }
+
+        .p2 {
+            order: -2;
+            flex-grow: 3;
+        }
+    </style>
+</head>
+
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+<div id="sample-html">
+    <div class="items">
+        <div class="item">
+            1
+        </div>
+        <div class="item p1">
+            2
+        </div>
+        <div class="item">
+            3
+        </div>
+        <div class="item p2">
+            4
+        </div>
+        <div class="item">
+            5
+        </div>
+        <div class="item">
+            6
+        </div>
+    </div>
+</div>
+
+    <script src="../sample.js"></script>
+</body>
+</html>
