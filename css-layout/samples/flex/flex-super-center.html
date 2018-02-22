@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Flex - cetrování</title>
     <link href="../sample.css" rel="stylesheet" />
-    
+
     <style>
         .sample {
             display: grid;
@@ -15,6 +15,11 @@
 
         #sample-html {
             display: grid;
+        }
+
+        .container {
+            border: .1em black dashed;
+            background: repeating-linear-gradient(-45deg, #fff, #fff 10px, #fff0f5 10px, #fff0f5 20px);
         }
     </style>
 
@@ -35,11 +40,11 @@
 
 <body class="sample sample--in-iframe">
     <h1 class="sample__title"></h1>
-<div id="sample-html">
-    <div class="container">
-        <div class="box"></div>
+    <div id="sample-html">
+        <div class="container">
+            <div class="box"></div>
+        </div>
     </div>
-</div>
 
     <script src="../sample.js"></script>
 </body>
