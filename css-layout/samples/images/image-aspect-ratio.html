@@ -1,0 +1,29 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Zachování poměr stran obrázku</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style id="sample-css">
+        .container {
+            width: 50vw;
+        }
+
+        .responsive-image {
+            width: inherit; /* Because we all love IE8 - http://stackoverflow.com/questions/8610077/height-auto-in-internet-explorer-8-and-below */
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <div class="container">
+            <img class="responsive-image" src="../resources/photos/03.jpg" alt="" />
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>
