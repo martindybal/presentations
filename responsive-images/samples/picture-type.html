@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Picture type fallback</title>
+    <link href="sample.css" rel="stylesheet" />
+    <style id="sample-css">
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html" style="min-height: 600px">
+<picture>
+    <source type="image/webp" srcset="../images/samples/art-direction/camera_800_533.webp 800w, ../images/samples/art-direction/camera_1200_800.webp 1200w, ../images/samples/art-direction/camera_1600_1066.webp 1600w">
+    <img alt="camera" sizes="100vw" src="../images/samples/art-direction/camera_1600_1066.jpg" srcset="../images/samples/art-direction/camera_800_533.jpg 800w, ../images/samples/art-direction/camera_1200_800.jpg 1200w, ../images/samples/art-direction/camera_1600_1066.jpg 1600w">
+</picture>
+    </div>
+
+    <script src="sample.js"></script>
+</body>
+</html>

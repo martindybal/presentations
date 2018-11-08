@@ -1,0 +1,717 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="/reveal/css/reveal.css">
+    <link rel="stylesheet" href="/reveal/css/theme/white.css">
+    <link rel="stylesheet" href="/reveal/lib/css/highlightjs-vs.css" />
+    <link href="plugins/code-sample/code-sample.css" rel="stylesheet" />
+
+    <style>
+        .side-by-side {
+            display: flex;
+            justify-content: center;
+        }
+
+        .reveal pre {
+            display: inline-block;
+        }
+
+            .reveal pre.inline {
+                line-height: 100%;
+                height: 100%;
+                vertical-align: middle;
+                font-size: .7em;
+            }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <h1>Responzivní obrázky</h1>
+                    <h2>Martin Dybal</h2>
+                    <a href="https://www.dybal.it/presentations/responsive-images">
+                        <img src="images/qr.svg" /> <br />
+                        https://www.dybal.it/presentations/responsive-images
+                    </a>
+                </section>
+                <section>
+                    <h1>O čem to bude?</h1>
+                    <ul>
+                        <li>Minulost obrázků na webu</li>
+                        <li>Formáty obrázků</li>
+                        <li>Proč potřebujeme responzivní obrázky</li>
+                        <li>
+                            Řešení
+                            <ul>
+                                <li><pre class="inline"><code class="nohighlight">srcset</code></pre> a <pre class="inline"><code class="nohighlight">sizes</code></pre></li>
+                                <li><pre class="inline"><code class="nohighlight">picture</code></pre> element</li>
+                            </ul>
+                        </li>
+                        <li>Řešení na serveru</li>
+                        <li>Optimalizace obrázků</li>
+                        <li>Lazy loading</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Historie</h1>
+                    <ul>
+                        <li>
+                            Rok 2000
+                            <ul>
+                                <li>
+                                    Rozlišení 800x600
+                                    <ul>
+                                        <li>Machři 1024x768</li>
+                                    </ul>
+                                <li>Weby s pevnou šířkou</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Rok 2006
+                            <ul>
+                                <li>
+                                    Responsivita začíná<br />
+                                    <img src="images/slides/history-steave-jobs.jpg" />
+                                </li>
+                                <li>Technologie na to nejsou připravené</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Historické řešení</h1>
+                    <ul>
+                        <li>Hacky pomocí css</li>
+                        <li>Detekce UA na serveru</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Formáty obrázků</h1>
+                    <ul>
+                        <li>
+                            Vektorové
+                            <ul>
+                                <li>Loga, ikony a pomocná grafika</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Rastrové
+                            <ul>
+                                <li>Fotografie</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>SVG - Scalable Vector Graphics</h1>
+                    <ul>
+                        <li>
+                            Obrázek neukládá jako pixely, ale jako popis obrazců
+                            <ul>
+                                <li>Vhodný pro Loga, Ikony, prvky uživatelského rozhran, ilustrace</li>
+                                <li>Nevhodný pro fotogragie</li>
+                            </ul>
+                        </li>
+
+                        <li class="fragment">
+                            Umožňuje
+                            <ul>
+                                <li>Zvětšování obrázku bez ztráty kvality</li>
+                                <li>Animace</li>
+                                <li>Stylování pomocí CSS</li>
+                                <li>Uživatelskou interakci JS</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Ukázka <br />
+                            <pre><code class="html" data-trim data-noescape>
+                            &#x3C;?xml version=&#x22;1.0&#x22; encoding=&#x22;utf-8&#x22; ?&#x3E;
+                            &#x3C;svg xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;400&#x22; height=&#x22;400&#x22;&#x3E;
+                                &#x3C;circle cx=&#x22;100&#x22; cy=&#x22;100&#x22; r=&#x22;50&#x22; fill=&#x22;red&#x22; /&#x3E;
+                            &#x3C;/svg&#x3E;</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Použití SVG</h1>
+                    <ul>
+                        <li>
+                            Jako obrázek <br />
+                            <pre><code class="html" data-trim data-noescape>&#x3C;img alt=&#x22;logo&#x22; src=&#x22;logo.svg&#x22; onerror=&#x22;this.onerror=null; this.src=&#x27;logo.png&#x27;&#x3E;</code></pre>
+                            <ul>
+                                <li>Cache obrázků</li>
+                                <li>Nelze upravovat pomocí css nebo js</li>
+                                <li>Větší podpora prohlížečů (IE8, Android 2.3), dnes nepodstatné</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Jako svg element
+
+                            <pre><code class="html" data-trim data-noescape>
+                                &#x3C;svg xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;400&#x22; height=&#x22;400&#x22;&#x3E;
+                                    &#x3C;circle cx=&#x22;100&#x22; cy=&#x22;100&#x22; r=&#x22;50&#x22; fill=&#x22;red&#x22; /&#x3E;
+                                &#x3C;/svg&#x3E;
+                            </code></pre>
+                            <ul>
+                                <li>
+                                    Lze stylovat pomocí CSS
+                                    <ul><li>Může být responzivní</li></ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Formát má velký potenciál a v posledních letech se využívá čím dál více
+                            <ul>
+                                <li>Více na <a href="https://www.vzhurudolu.cz/svg">www.vzhurudolu.cz/svg</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Rastrové obrázky</h1>
+                    <ul>
+                        <li>
+                            Ukládají pixely
+                            <ul>
+                                <li>vhodné pro fotografie</li>
+                            </ul>
+                        </li>
+                        <li>
+                            bmp, gif, jpeg, png, webp<br />
+                            <img src="images/slides/formats-raster.png" />
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Srovnání velikostí</h1>
+                    <div class="side-by-side">
+                        <img src="images/slides/formats_DSC00849_600.jpg" width="600" height="400" />
+                        <table style="margin: 0 0 0 1em">
+                            <tr>
+                                <th>Typ souboru</th>
+                                <th>Velikost 6000x4000</th>
+                            </tr>
+                            <tr>
+                                <td>bmp</td>
+                                <td>
+                                    68.6 MB <a target="_blank" href="images/samples/formats/DSC00849.bmp">Náhled</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>gif</td>
+                                <td>8.88 MB <a target="_blank" href="images/samples/formats/DSC00849.gif">Náhled</a></td>
+                            </tr>
+                            <tr>
+                                <td>png</td>
+                                <td>33.4MB - 7.54 MB <a target="_blank" href="images/samples/formats/DSC00849.png">Náhled</a>, <a target="_blank" href="images/samples/formats/DSC00849_compressed.jpg">Náhled</a></td>
+                            </tr>
+                            <tr>
+                                <td>jpeg</td>
+                                <td>4.24 MB - 851 KB <a target="_blank" href="images/samples/formats/DSC00849.jpg">Náhled</a>, <a target="_blank" href="images/samples/formats/DSC00849_compressed.jpg">Náhled</a></td>
+                            </tr>
+                            <tr>
+                                <td>webp</td>
+                                <td>782 KB <a target="_blank" href="images/samples/formats/DSC00849.webp">Náhled</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <strong>Srovnání je velmi orientační!</strong> Záleží hodně na konkrétním nastavení komprimovacích algoritmů!
+                </section>
+                <section>
+                    <h1>BMP</h1>
+                    <ul>
+                        <li>Je ukládán po pixelech</li>
+                        <li>Nepoužívá žádnou kompresi</li>
+                        <li>V praxi se na webu nepoužívá vůbec</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>GIF</h1>
+                    <ul>
+                        <li>Používá bezeztrátovou kompresi, ale umožňuje pouze 256 barev</li>
+                        <li>Umožňuje animace</li>
+                        <li>
+                            dnes se již nepoužívá, byl nahrazen formátem png
+                            <ul>
+                                <li>Pro animace lze použít formát apng (nepodporuje IE) nebo svg</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="side-by-side">
+                        <div>
+                            <img alt="png 97KB" src="images/slides/formats_DSC00849_600.png" width="600" height="400" /><br />
+                            png 97KB
+                        </div>
+                        <div>
+                            <img alt="gif 104KB" src="images/slides/formats_DSC00849_600.gif" width="600" height="400" /><br />
+                            gif 104KB
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h1>PNG</h1>
+                    <ul>
+                        <li>Používá bezeztrátovou kompresi</li>
+                        <li>Umožňuje použití alfa kanálu (průhlednost). I poloprůhlednost (RGBA)</li>
+                        <li>
+                            Typy formátu
+                            <ul>
+                                <li>
+                                    GrayScale
+                                    <ul><li>Barevná hloubka 24bit = 16 milionů barev</li></ul>
+                                </li>
+                                <li>
+                                    indexed color (PNG-8)
+                                    <ul><li>Barevná hloubka 8bit = 256 barev</li></ul>
+                                </li>
+                                <li>
+                                    truecolor (PNG-24)
+                                    <ul><li>Barevná hloubka 24bit = 16 milionů barev</li></ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Pro animace je speciální formát APNG, případně MNG</li>
+                        <li><strong>Na webu se používá především pro podporu průhlednosti a jako fallback svg</strong></li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>JPEG</h1>
+                    <ul>
+                        <li>Ztrátová komprese, využívá nedokonalosti lidského oka</li>
+                        <li><strong>Ideální formát pro fotografie</strong></li>
+                        <li>Nepodporuje alfa kanál</li>
+                        <li>
+                            Nehodí se pro obrázky s ostrýmy hranami.
+                            <ul>
+                                <li>Ikony, perokresba, Text</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Progressive jpeg</h1>
+                    <a onclick="document.getElementById('progressive-img-sample-1').src = 'http://pooyak.com/p/progjpeg/jpegload.cgi?o=0'; document.getElementById('progressive-img-sample-2').src = 'http://www.pooyak.com/p/progjpeg/jpegload.cgi?o=1'; this.style.display = 'none'; document.getElementById('progressive-jpeg-sample').style.display = 'flex';">
+                        <div style="padding: 260px;">
+                            Ukázka
+                        </div>
+                    </a>
+                    <div id="progressive-jpeg-sample" class="side-by-side" style="display: none;">
+                        <div>
+                            <img id="progressive-img-sample-1" src="" width="377" height="500" alt="[Normal JPG]"><br>
+                            Jpeg 62KB
+                        </div>
+                        <div>
+                            <img id="progressive-img-sample-2" src="" width="377" height="500" alt="[Progressive JPG]"><br>
+                            Progressive Jpeg 62KB
+                        </div>
+                    </div>
+                    source: <a target="_blank" href="http://pooyak.com/p/progjpeg/">http://pooyak.com/p/progjpeg/</a>
+                </section>
+                <section>
+                    <h1>WebP</h1>
+                    <ul>
+                        <li>Umožňuje ztrátovou i bezeztrátovou kompresi</li>
+                        <li>Podporuje alfa kanál</li>
+                        <li>Umožňuje animace</li>
+                        <li>Neumí progresivní vykreslování</li>
+                        <li>Vyvinut Googlem v roce 2010</li>
+                        <li>Úspora dat při bezztrátové kompresi proti png až 26%</li>
+                        <li>Úspora dat při ztrtové kompresi proti jpeg až 34%</li>
+                        <li class="fragment">
+                            Podpora
+                            <ul>
+                                <li>Chrome, Opera</li>
+                                <li>Edge</li>
+                                <li>Firefox přidá podporu ve verzi 65 (29. 1. 2019)</li>
+                                <li>Nutnost používat fallback</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Jaký zvolit formát?</h1>
+                    <ul>
+                        <li>Pokud lze, použít vektorový formát SVG</li>
+                        <li>Pokud je potřeba alfa kanál, WebP s fallbackem na PNG</li>
+                        <li>Jinak, WebP s fallbackem na JPEG</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Proč potřebujeme<br />responzivní obrázky</h1>
+                </section>
+                <section>
+                    <h1>Use cases</h1>
+                    <div class="side-by-side">
+                        <div>
+                            <img width="415" height="209" src="images/slides/why_devices1.jpg" /><br />
+                            <img width="415" height="209" src="images/slides/why_devices2.jpg" />
+                        </div>
+                        <ul class="toc">
+                            <li>Resolution-based selection</li>
+                            <li>Viewport-based selection</li>
+                            <li>Device-pixel-ratio-based selection</li>
+                            <li>Art direction</li>
+                            <li>Design breakpoints</li>
+                            <li>Matching media features and media types</li>
+                            <li>Relative units</li>
+                            <li>Image formats</li>
+                            <li>User control over sources</li>
+                            <li>Managing source swapping between breakpoints</li>
+                        </ul>
+                        <img width="400" height="260" src="images/slides/why_devices3.jpg" />
+                    </div>
+                    <a target="_blank" href="https://usecases.responsiveimages.org/#use-cases">Specifikace</a>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Řešení</h1>
+                    <ul>
+                        <li>přidány atributy <pre class="inline"><code class="nohighlight">img</code></pre> tagu <pre class="inline"><code class="nohighlight">srcset</code></pre> a <pre class="inline"><code class="nohighlight">sizes</code></pre></li>
+                        <li><pre class="inline"><code class="nohighlight">picture</code></pre> element</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>srcset</h1>
+                    <pre><code class="html" data-trim data-noescape>&lt;img sizes="100vw" <mark>srcset="https://via.placeholder.com/1200x800.png 1200w, https://via.placeholder.com/1600x1066.png 1600w"</mark> /&gt;</code></pre>
+
+                    <ul>
+                        <li>
+                            Množina zdrojů obrázků, oddělených čárkou
+                            <ul>
+                                <li>Všechny obrázky musí mít stejnou kompozici</li>
+                                <li>Všechny obrázky musí mít stejný formát souboru</li>
+                                <li>Nevíme, který obrázek prohlížeč vybere</li>
+                            </ul>
+                        </li>
+
+                        <li>Zdrojů může být neomezeně</li>
+                        <li>Každý zdroj má jeden deskriptor</li>
+                        <li>Formát <pre class="inline"><code class="html">src descriptor, src deskriptor</code></pre></li>
+                        <li>Deskiptor <pre class="inline"><code class="nohighlight">x</code></pre> nebo <pre class="inline"><code class="nohighlight">w</code></pre> říká prohlížeči jaký obrázek se na adrese <strong>src</strong> nachází</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Deskriptor X</h1>
+                    <img src="images/slides/why_devices2.jpg" /><br />
+                    <pre><code class="html" data-trim data-noescape>&lt;img height="100" width="100" sizes="100px"
+     srcset="https://via.placeholder.com/100x100.png <mark>1x</mark>,
+             https://via.placeholder.com/150x150.png <mark>1.5x</mark>,
+             https://via.placeholder.com/200x200.png <mark>2x</mark>,
+             https://via.placeholder.com/300x300.png <mark>3x</mark>" /&gt;</code></pre><br />
+                    <ul>
+                        <li>Říká pro jaké <pre class="inline"><code class="nohighlight">device-pixel-ratio</code></pre> je obrázek připraven</li>
+                        <li class="fragment">Běžně se moc nepoužívá, výhodnější je <pre class="inline"><code class="nohighlight">w</code></pre></li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Deskriptor W</h1>
+                    <img src="images/slides/why_devices1.jpg" /><br />
+                    <pre><code class="html" data-trim data-noescape>&lt;img height="100" width="100" sizes="100px"
+     srcset="https://via.placeholder.com/100x100.png <mark>100w</mark>,
+             https://via.placeholder.com/150x150.png <mark>150w</mark>,
+             https://via.placeholder.com/200x200.png <mark>200w</mark>,
+             https://via.placeholder.com/300x300.png <mark>300w</mark>" /&gt;</code></pre><br />
+                    <ul>
+                        <li>Říká pro jakou šířku v px má obrázek</li>
+                        <li>Prohlížeč zná velikost obrázku i <pre class="inline"><code class="nohighlight">device-pixel-ratio</code></pre> a podle toho vybere vhodný obrázek</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Výběr obrázku ze srcset</h1>
+                    Výběr je na prohlížeči. Vývojář ji nemůže ovlivnit. <br />
+                    <img src="images/slides/4_8_4_3_6_Selecting_an_image_source.png" /><br />
+                    <a target="_blank" href="https://html.spec.whatwg.org/multipage/images.html#selecting-an-image-source">Specifikace: Selecting an image source</a>
+                </section>
+                <section>
+                    <h1>Výběr obrázku ze srcset</h1>
+                    <ul>
+                        <li>Velikost obrázku na stránce</li>
+                        <li><pre class="inline"><code class="nohighlight">device-pixel-ratio</code></pre></li>
+                        <li>Uživatelská preference (Data saver mode)</li>
+                        <li>Cache</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Výběr obrázku ze srcset</h1>
+                    <pre><code class="html" data-trim data-noescape>
+                    <mark>&lt;img srcset="https://via.placeholder.com/1200x800.png 1200w, https://via.placeholder.com/1600x1066.png 1600w" /&gt;</mark></code></pre>
+                    <h2 data->Edge</h2>
+                    <ul>
+                        <li>
+                            Geometrický průměr
+                            <ul>
+                                <li>Geometrický průměr: breakpoint = &radic;(src1w * src2w)</li>
+                                <li>&radic;(1200 * 1600) = 1385px</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2 class="fragment" data-fragment-index="1">Chrome, Firefox</h2>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">
+                            Bere nejbližší vyšší pro DPI &lt;= 1
+                            <ul>
+                                <li>Breakpoint = 1201px</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">Pro DPI > 1 berou geometrický průměr</li>
+                    </ul>
+                </section>
+                <section data-sample-url="samples/srcset-resize-sample.html"></section>
+                <section>
+                    <h1>Sizes</h1><ul>
+                        <li>
+                            <pre class="inline"><code class="nohighlight">sizes</code></pre> říká prohlíčeči, jak velký bude obrázek
+                            <ul><li>V době vykreslování obrázku, nejsou staženy css</li></ul>
+                            <pre><code class="html" data-trim data-noescape>&lt;img <mark>sizes="100vw"</mark> srcset="..." /&gt;
+
+<span class="fragment">&lt;img <mark>sizes="(min-width: 1200px) 1200px, 100vw"</mark> srcset="..." /&gt;</span>
+
+<span class="fragment">&lt;img <mark>sizes="(max-width: 767px) 100vw, 
+            (max-width: 991px) 50vw, 
+            (max-width: 1199px) 33vw, 
+            25vw"</mark> 
+     srcset="..." /&gt;</span>
+
+<span class="fragment">&lt;img <mark>sizes="(min-width: 1200px) calc(25vw - 3rem), 
+            (min-width: 992px) calc(33vw - 3rem), 
+            (min-width: 768px) calc(50vw - 3rem), 
+            calc(50vw - 3rem)"</mark> 
+     srcset="..." /&gt;</span></code></pre>
+                        </li>
+                        <li class="fragment">
+                            <strong>Na pořadí záleží!</strong> bere se první vyhovující
+                        </li>
+                        <li class="fragment">
+                            Lze použít libovolné css jednotky
+                            <ul>
+                                <li><strong>css ještě není staženo a aplikováno!</strong></li>
+                                <li>Nejvhodnější jednotky <pre class="inline"><code class="nohighlight">vw</code></pre>, <pre class="inline"><code class="nohighlight">vh</code></pre>, <pre class="inline"><code class="nohighlight">vmin</code></pre>, <pre class="inline"><code class="nohighlight">vmax</code></pre> a <pre class="inline"><code class="nohighlight">px</code></pre></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Nikdy nezapomínejte na <strong>sizes!</strong></h1>
+                    <div class="side-by-side">
+
+                        <img height="400" width="400" srcset="https://via.placeholder.com/400x400.png 400w,
+                                      https://via.placeholder.com/800x800.png 800w,
+                                      https://via.placeholder.com/1200x1200.png 1200w" />
+
+                        <img sizes="400px" height="400" width="400" srcset="https://via.placeholder.com/400x400.png 400w,
+                                                    https://via.placeholder.com/800x800.png 800w" />
+
+                        <img sizes="400px" height="400" width="400" srcset="https://via.placeholder.com/400x400.png 400w,
+                                                    https://via.placeholder.com/800x800.png 800w,
+                                                    https://via.placeholder.com/1200x1200.png 1200w" class="fragment" data-fragment-index="1" />
+                    </div>
+                    <pre><code class="html" data-trim data-noescape>
+&#x3C;img height=&#x22;400&#x22; width=&#x22;400&#x22; srcset=&#x22;https://via.placeholder.com/400x400.png 400w,
+                                      https://via.placeholder.com/800x800.png 800w,
+                                      https://via.placeholder.com/1200x1200.png 1200w&#x22; /&#x3E;
+
+&#x3C;img <mark>sizes=&#x22;400px&#x22;</mark> height=&#x22;400&#x22; width=&#x22;400&#x22; srcset=&#x22;https://via.placeholder.com/400x400.png 400w,
+                                                    https://via.placeholder.com/800x800.png 800w&#x22; /&#x3E;
+
+                    <span class="fragment" data-fragment-index="1">
+&#x3C;img <mark>sizes=&#x22;400px&#x22;</mark> height=&#x22;400&#x22; width=&#x22;400&#x22; srcset=&#x22;https://via.placeholder.com/400x400.png 400w,
+                                                    https://via.placeholder.com/800x800.png 800w,
+                    <mark>https://via.placeholder.com/1200x1200.png 1200w&#x22;</mark> /&#x3E;
+    </span>
+</code></pre>
+                </section>
+                <section>
+                    <h1>Fallback</h1>
+                    <ul>
+                        <li>
+                            Stále funguje <pre class="inline"><code class="nohighlight">src</code></pre>
+                            <ul>
+                                <li>pokud prohlížeč nezná <pre class="inline"><code class="nohighlight">srcset</code></pre> ignoruje ho</li>
+                                <li>pokud je přítomen <pre class="inline"><code class="nohighlight">srcset</code></pre> a prohlížeč ho podporuje, ignoruje <pre class="inline"><code class="nohighlight">src</code></pre> </li>
+                            </ul>
+                        </li>
+                    </ul><br />
+                    <img style="border: none; box-shadow: none;" alt="we love IE" src="images/slides/love-IE.png" /><br />
+                    <pre><code class="html" data-trim data-noescape>
+&lt;img alt="we love IE" src="fallback.jpg" sizes="..." srcset="..." /&gt;
+</code></pre>
+                </section>
+                <section>
+                    <h1>Celá definice obrázku</h1>
+                    <pre><code class="css" data-trim data-noescape>
+.image-sample {
+    width: 100vw;
+}
+
+@media screen and (min-width: 1200px) {
+    .image-sample {
+        width: 1200px;
+    }
+}
+</code></pre>
+                    <pre><code class="html">&lt;img class="image-sample" alt="image sample" 
+     src="https://via.placeholder.com/1200x1200.JPG" 
+     srcset="https://via.placeholder.com/400x400.JPG 400w,
+             https://via.placeholder.com/800x800.JPG 800w,
+             https://via.placeholder.com/1200x1200.JPG 1200w"
+     sizes="(min-width: 1200px) 1200px, 100vw" /&gt;
+
+
+
+</code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Picture</h1>
+                    <ul>
+                        <li>Jeden obrázek může mít více zdrojů</li>
+                        <li>Umožňuje art direction</li>
+                        <li>Umožňuje fallback podle mime type</li>
+                    </ul><br />
+                    <pre><code class="html" data-trim data-noescape>
+&lt;picture&gt;
+    &lt;source media=&quot;...&quot; type=&quot;...&quot; srcset=&quot;...&quot;&gt;
+    &lt;source media=&quot;...&quot; type=&quot;...&quot; srcset=&quot;...&quot;&gt;
+    &lt;img alt=&quot;...&quot; sizes=&quot;...&quot; src=&quot;...&quot; srcset=&quot;...&quot;&gt;
+&lt;/picture&gt;
+</code></pre>
+                </section>
+                <section data-sample-url="samples/picture-art-direction.html"></section>
+                <section data-sample-url="samples/picture-type.html"></section>
+                <section data-sample-url="samples/picture-full.html"></section>
+
+                <section>
+                    <h1>Picture</h1>
+                    <pre><code class="html" style="max-height: 920px;" data-trim data-noescape>
+&lt;picture&gt;
+    &lt;source media=&quot;(min-width: 1280px)&quot; type=&quot;image/webp&quot;
+            sizes=&quot;50vw&quot;
+            srcset=&quot;camera-wide-200.webp 200w,
+                    camera-wide-400.webp 400w,
+                    camera-wide-800.webp 800w,
+                    camera-wide-1200.webp 1200w,
+                    camera-wide-1600.webp 1600w,
+                    camera-wide-2000.webp 2000w&quot ;&gt;
+    &lt;source type=&quot;image/webp&quot;
+            sizes=&quot;(min-width: 640px) 60vw, 100vw&quot;
+            srcset=&quot;camera-crop-200.webp 200w,
+                    camera-crop-400.webp 400w,
+                    camera-crop-800.webp 800w,
+                    camera-crop-1200.webp 1200w,
+                    camera-crop-1600.webp 1600w,
+                    camera-crop-2000.webp 2000w&quot; &gt;
+    &lt;source media=&quot;(min-width: 1280px)&quot;
+            sizes=&quot;50vw&quot;
+            srcset=&quot;camera-wide-200.jpg 200w,
+                    camera-wide-400.jpg 400w,
+                    camera-wide-800.jpg 800w,
+                    camera-wide-1200.jpg 1200w,
+                    camera-wide-1600.jpg 1800w,
+                    camera-wide-2000.jpg 2000w&quot;&gt;
+    &lt;img alt=&quot;Sony Alpha A7&quot; src=&quot;camera-crop-400.jpg&quot;
+         sizes=&quot;(min-width: 640px) 60vw, 100vw&quot;
+         srcset=&quot;camera-crop-200.jpg 200w, camera-crop-400.jpg 400w, camera-crop-800.jpg 800w,  
+                 camera-crop-1200.jpg 1200w, camera-crop-1600.jpg 1600w, camera-crop-2000.jpg 2000w&quot;&gt;
+&lt;/picture&gt;
+</code></pre>
+                </section>
+                <section>
+                    <h1>Jak to udělat a nezešílet z toho?</h1>
+                    <h2>Demo</h2>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Řešení na serveru</h1>
+                    <ul>
+                        <li>
+                            Hlavička Accept
+                            <ul>
+                                <li>
+                                    Accept:
+                                    <pre class="inline"><code class="nohighlight">image/webp,image/apng,image/*,*/*;q=0.8</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Client Hints</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Hlavičky Client Hints</h1>
+                    <ul>
+                        <li>
+                            Response html<br /><pre><code class="csharp" data-trim data-noescape>
+context.Response.Headers["Accept-CH"] = "DPR, Width, Viewport-Width";
+context.Response.Headers["Accept-CH-Lifetime"] = "86400";
+</code></pre>
+                        </li>
+                        <li>
+                            Request img<br /><pre><code class="csharp" style="max-height: 800px;" data-trim data-noescape>
+if (context.Request.Path.HasValue && context.Request.Path.Value.StartsWith("/images"))
+{
+    var acceptHeader = context.Request.Headers["accept"];
+    var acceptWebp = string.Join(string.Empty, acceptHeader).Split(",").Contains("image/webp");
+
+    var viewportWidth = context.Request.Headers["Viewport-Width"];
+    var width = context.Request.Headers["width"];
+    var dpr = context.Request.Headers["DPR"];
+
+    if (acceptWebp)
+    {
+        return WebpImage(context);
+    }
+    else
+    {
+        return JpegImage(context);
+    }
+}
+</code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>Cloudinary</h1>
+                    <h2>Demo</h2>
+                </section>
+            </section>
+
+            <section>
+                <h1>Responzivní obrázky</h1>
+                <h2>Martin Dybal</h2>
+                <ul>
+                    <li>
+                        Zdroje
+                        <ul>
+                            <li><a target="_blank" href="https://abookapart.com/products/image-performance">image performance, Mat Marquis</a></li>
+                            <li><a target="_blank" href="https://responsiveimages.org">Responsive Images Community Group</a></li>
+                            <li><a target="_blank" href="https://html.spec.whatwg.org/multipage/images.html#images">HTML Living Standard 4.8.4 Images</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="/reveal/lib/js/head.min.js"></script>
+    <script src="/reveal/js/reveal.js"></script>
+    <script src="/reveal/plugin/markdown/marked.js"></script>
+    <script src="/reveal/plugin/markdown/markdown.js"></script>
+    <script src="/reveal/plugin/highlight/highlight.js"></script>
+    <script src="/reveal/plugin/notes/notes.js"></script>
+    <script src="/reveal-initialize.js"></script>
+    <script src="plugins/code-sample/code-sample.js"></script>
+</body>
+</html>

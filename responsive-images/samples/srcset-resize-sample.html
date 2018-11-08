@@ -1,0 +1,35 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>srcset resize demo</title>
+    <link href="sample.css" rel="stylesheet" />
+    <style id="sample-css">
+        img {
+            width: 50vw;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html" style="min-height: 600px">
+        <span>Šířka obrázku</span><br />
+        <img sizes="50vw" srcset="https://via.placeholder.com/400x400.png 400w,
+                          https://via.placeholder.com/800x800.png 800w,
+                          https://via.placeholder.com/1200x1200.png 1200w" />
+    </div>
+    <script>
+        (function () {
+            var resize = function () {
+                document.querySelector('span').innerText = document.querySelector('img').width + ' px';
+            }
+            resize();
+            window.addEventListener("resize", resize, false);
+        }());
+    </script>
+    <script src="sample.js"></script>
+</body>
+</html>
