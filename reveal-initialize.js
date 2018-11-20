@@ -20,13 +20,13 @@
         src: '//cdn.socket.io/socket.io-1.3.5.js',
         async: true
     }, {
-        src: '/reveal/plugin/multiplex/client.js',
+        src: '../reveal/plugin/multiplex/client.js',
         async: true
     }, {
-        src: '/reveal/plugin/notes/notes.js',
+        src: '../reveal/plugin/notes/notes.js',
         async: true
     }, {
-        src: '/reveal/plugin/highlight/highlight.js',
+        src: '../reveal/plugin/highlight/highlight.js',
         async: true,
         callback: function () {
             hljs.initHighlightingOnLoad();
