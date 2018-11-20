@@ -1,0 +1,99 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Grid - foto galerie</title>
+    <link href="../sample.css" rel="stylesheet" />
+
+    <style id="sample-css">
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+            grid-auto-rows: auto;
+            grid-auto-flow: dense;
+            grid-gap: .5em;
+        }
+
+        .photo img {
+            height: auto;
+            max-width: 100%;
+        }
+
+        .photo--portrait {
+            grid-row: auto/span 3;
+        }
+
+        @media only screen and (min-width: 51em) {
+            .photo--large {
+                grid-column: auto/span 2;
+                grid-row: auto/span 2;
+            }
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <div class="photo-gallery">
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/01.jpg"
+                     srcset="../resources/photos/01.jpg 1366w, ../resources/photos/01_1024.jpg 1024w, ../resources/photos/01_512.jpg 512w, ../resources/photos/01_683.jpg 683w, ../resources/photos/01_820.jpg 820w" />
+            </div>
+            <div class="photo photo--large">
+                <img sizes="100vw"
+                     src="../resources/photos/02.jpg"
+                     srcset="../resources/photos/02.jpg 1366w, ../resources/photos/02_1024.jpg 1024w, ../resources/photos/02_512.jpg 512w, ../resources/photos/02_683.jpg 683w, ../resources/photos/02_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/03.jpg"
+                     srcset="../resources/photos/03.jpg 1366w, ../resources/photos/03_1024.jpg 1024w, ../resources/photos/03_512.jpg 512w, ../resources/photos/03_683.jpg 683w, ../resources/photos/03_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/04.jpg"
+                     srcset="../resources/photos/04.jpg 1366w, ../resources/photos/04_1024.jpg 1024w, ../resources/photos/04_512.jpg 512w, ../resources/photos/04_683.jpg 683w, ../resources/photos/04_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/05.jpg"
+                     srcset="../resources/photos/05.jpg 1366w, ../resources/photos/05_1024.jpg 1024w, ../resources/photos/05_512.jpg 512w, ../resources/photos/05_683.jpg 683w, ../resources/photos/05_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/06.jpg"
+                     srcset="../resources/photos/06.jpg 1366w, ../resources/photos/06_1024.jpg 1024w, ../resources/photos/06_512.jpg 512w, ../resources/photos/06_683.jpg 683w, ../resources/photos/06_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/07.jpg"
+                     srcset="../resources/photos/07.jpg 1366w, ../resources/photos/07_1024.jpg 1024w, ../resources/photos/07_512.jpg 512w, ../resources/photos/07_683.jpg 683w, ../resources/photos/07_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/08.jpg"
+                     srcset="../resources/photos/08.jpg 1366w, ../resources/photos/08_1024.jpg 1024w, ../resources/photos/08_512.jpg 512w, ../resources/photos/08_683.jpg 683w, ../resources/photos/08_820.jpg 820w" />
+            </div>
+            <div class="photo photo--portrait">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/09.jpg"
+                     srcset="../resources/photos/09.jpg 768w, ../resources/photos/09_288.jpg 288w, ../resources/photos/09_384.jpg 384w, ../resources/photos/09_461.jpg 461w, ../resources/photos/09_576.jpg 576w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/10.jpg"
+                     srcset="../resources/photos/10.jpg 1366w, ../resources/photos/10_1024.jpg 1024w, ../resources/photos/10_512.jpg 512w, ../resources/photos/10_683.jpg 683w, ../resources/photos/10_820.jpg 820w" />
+            </div>
+            <div class="photo">
+                <img sizes="(min-width: 51em) 50vw, 100vw"
+                     src="../resources/photos/11.jpg"
+                     srcset="../resources/photos/11.jpg 1366w, ../resources/photos/11_1024.jpg 1024w, ../resources/photos/11_512.jpg 512w, ../resources/photos/11_683.jpg 683w, ../resources/photos/11_820.jpg 820w" />
+            </div>
+        </div>
+    </div>
+
+    <script src="../sample.js"></script>
+</body>
+</html>

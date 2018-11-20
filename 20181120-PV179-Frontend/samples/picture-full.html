@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Picture</title>
+    <link href="sample.css" rel="stylesheet" />
+    <style id="sample-css">
+        </style>
+</head>
+<body class="sample sample--in-iframe">
+<h1 class="sample__title"></h1>
+<div id="sample-html" style="min-height: 600px">
+<picture>
+    <source type="image/webp" media="(max-aspect-ratio: 1/1)" srcset="../images/samples/art-direction/camera_533_800.webp 533w, ../images/samples/art-direction/camera_800_1200.webp 800w, ../images/samples/art-direction/camera_1066_1600.webp 1066w">
+    <source type="image/webp" srcset="../images/samples/art-direction/camera_800_533.webp 800w, ../images/samples/art-direction/camera_1200_800.webp 1200w, ../images/samples/art-direction/camera_1600_1066.webp 1600w">
+    <source type="image/jpeg" media="(max-aspect-ratio: 1/1)" srcset="../images/samples/art-direction/camera_533_800.jpg 533w, ../images/samples/art-direction/camera_800_1200.jpg 800w, ../images/samples/art-direction/camera_1066_1600.jpg 1066w">
+    <img alt="camera" sizes="100vw" src="../images/samples/art-direction/camera_1600_1066.jpg" srcset="../images/samples/art-direction/camera_800_533.jpg 800w, ../images/samples/art-direction/camera_1200_800.jpg 1200w, ../images/samples/art-direction/camera_1600_1066.jpg 1600w">
+</picture>
+</div>
+
+<script src="sample.js"></script>
+</body>
+</html>
