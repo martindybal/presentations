@@ -37,10 +37,13 @@
         <div class="slides">
             <section>
                 <section>
+                    <h1>MVVM?</h1>
+                </section>
+                <section>
                     <h1>DotVVM in Real Business Web Apps</h1>
                     <h2>Martin Dybal</h2>
                     <a target="_blank" href="https://www.dybal.it/presentations/20181123-Update-DotVVM/">
-                        <img src="images/qr.svg" /> <br />
+                        <img src="images/qr.svg"/> <br/>
                         https://www.dybal.it/presentations/20181123-Update-DotVVM/
                     </a>
                 </section>
@@ -48,18 +51,18 @@
                     <h1>Flight finder</h1>
                     <h2>demo</h2>
                     <ul>
-                        <li class="fragment"><a href="#how-its-work">How it's work?</a></li>
+                        <li class="fragment"><a href="#how-does-it-work">How does it work?</a></li>
                         <li class="fragment"><a href="#under-the-hood">Under the Hood</a></li>
                         <li class="fragment"><a href="#validation">Validation</a></li>
                         <li class="fragment"><a href="#tests">Tests</a></li>
                     </ul>
-                    <br />
+                    <br/>
                     <a target="_blank" href="https://github.com/martindybal/dotvvm-samples-FlightFinder">https://github.com/martindybal/dotvvm-samples-FlightFinder</a>
                 </section>
             </section>
-            <section id="how-its-work">
+            <section id="how-does-it-work">
                 <section>
-                    <h1>How it's work?</h1>
+                    <h1>How does it work?</h1>
                 </section>
                 <section>
                     <h1>Startup configuration</h1>
@@ -86,7 +89,10 @@
                 </section>
                 <section>
                     <h1>Postback</h1>
-                    <h4><i>Yes, postback strikes back</i></h4>
+                    
+                    <aside class="notes">
+                        Yes, postback strikes back
+                    </aside>
                 </section>
                 <section>
                     <h1>Static commands</h1>
@@ -97,15 +103,11 @@
                     <h1>Validation</h1>
                     <aside class="notes">
                         DotVVM supports the Model Validation mechanism known from other like ASP.NET MVC
-                        
+
                         You can validate either the whole viewmodel, or specific child object. By default, every button triggers the validation on the whole viewmodel. You can change the validation target to some child object of the viewmodel. You can also disable the validation for particular buttons.
 
                         You can use the default validation attributes, write your own ones, and add your own validation logic by implementing the IValidatableObject interface.
-                    </aside>
-                </section>
-                <section>
-                    <h1>Validation Attributes</h1>
-                    <aside class="notes">
+
                         You can validate the viewmodel properties by applying the validation attributes on them, e.g. the Required attribute.
 
                         Optionally, you can set the ErrorMessage parameter directly, or use the ErrorMessageResourceType and ErrorMessageResourceName of the Required attribute to get localized error message from the resource file.
@@ -130,6 +132,15 @@
                     <aside class="notes">
                         We have also test framework for DotVVM UI testing. Which make your life a lot of easier! 
                     </aside>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Do you want to know more?</h1>
+                    <ul>
+                        <li><a target="_blank" href="https://github.com/riganti/dotvvm-hands-on-lab">Hands On Lab</a></li>
+                        <li><a target="_blank" href="https://academy.dotvvm.com">Academy</a></li>
+                    </ul>
                 </section>
             </section>
         </div>
