@@ -1,4 +1,26 @@
 ﻿(function () {
+    var removeTabFromStart = function (text) {
+        function getIndentLevel(text) {
+            var index = 0;
+            while (text.charAt(index) === "\t" || 
+                   text.charAt(index) === " ") {
+                index++;
+            }
+            return index;
+        }
+
+        var lines = text.split('\n');
+        var firstLineIndentLevel = getIndentLevel(lines[1]);
+
+        text = "";
+        for (var i = 0; i < lines.length; i++) {
+            var line = lines[i].substr(firstLineIndentLevel);
+            text = text + "\n" + line;
+        }
+
+        return text.replace(/(^[ \t]*\n)/gm, "");
+    };
+
     function createCodeSample(element, sourceCode, lang) {
         var pre = document.createElement('pre');
         pre.classList.add('code-sample__' + lang);
@@ -29,8 +51,11 @@
                 title.innerText = sampleDocument.getElementsByTagName('title')[0].innerText;
                 codeSample.appendChild(title);
 
-                var sampleHtml = sampleDocument.querySelectorAll('#sample-html')[0].innerHTML.trim();
-                var sampleCss = sampleDocument.querySelectorAll('#sample-css')[0].innerHTML.trim();
+                var sampleHtml = sampleDocument.querySelectorAll('#sample-html')[0].innerHTML;
+                sampleHtml = removeTabFromStart(sampleHtml);
+
+                var sampleCss = sampleDocument.querySelectorAll('#sample-css')[0].innerHTML;
+                sampleCss = removeTabFromStart(sampleCss);
 
                 createCodeSample(codeSample, sampleCss, 'css');
                 createCodeSample(codeSample, sampleHtml, 'html');
