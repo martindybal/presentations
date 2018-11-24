@@ -1,4 +1,17 @@
-﻿.sample--in-iframe .sample__title {
+﻿.sample__title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #222;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+.sample--in-iframe .sample__title {
     display: none;
 }
 
