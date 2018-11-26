@@ -1,0 +1,159 @@
+﻿<html>
+<head>
+    <title>CSS Layout 2018 - Matin Dybal</title>
+    <meta property="og:title" content="CSS Layout 2018 - Matin Dybal" />
+    <meta property="og:description" content="V CSS jsme se dočkali opravdového řešení pro layout stránek. Díky tomu můžeme zvolit vhodné řešení a smazat (nenapsat) spoustu kódu. Na přednášce se zaměřím na CSS Grid. Ukážu jak jej použít, kdy je vhodné jej použít a pár zákeřností s kterými jsem se za rok používání potkal." />
+    <meta property="og:url" content="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/" />
+    <meta property="og:image" content="https://www.dybal.it/output/img/profile-photo.jpg" />
+
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/white.css">
+    <link rel="stylesheet" href="../reveal/lib/css/highlightjs-vs.css" />
+    <link href="plugins/code-sample/code-sample.css" rel="stylesheet" />
+    <style>
+
+        .section__content-wrapper {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .section__content__column {
+            text-align: left;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            text-transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <h1>CSS Layout</h1>
+                    <h2>2018</h2>
+                    <a target="_blank" href="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/">
+                        <img src="images/qr.png" width="600" height="600" style="border: none;" />
+                    </a>
+                    <h3>Martin Dybal</h3>
+                </section>
+                <section>
+                    <h1>Co nás čeká</h1>
+                    <ul>
+                        <li>Náhled do brzké minulost</li>
+                        <li>Columns</li>
+                        <li>Flex</li>
+                        <li>Grid</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section data-markdown="samples/hacking/hacking.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section>
+                    <img src="samples/hacking/css-hacks.gif" style="width: 90vw; height: 90vh" />
+                </section>
+                <section data-sample-url="samples/float/float-text-circle.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-float.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-float-real-data.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-inline.html"></section>
+                <section data-sample-url="samples/hacking/items-grid-table.html"></section>
+            </section>
+            <section>
+                <h2>Nové css vlastnosti</h2>
+                <ul>
+                    <li>
+                        <strong>Column</strong>
+                        <ul><li>caniuse: 95.9%</li></ul>
+                    </li>
+                    <li>
+                        <strong>Flexbox</strong>
+                        <ul><li>caniuse: 95.9%</li></ul>
+                    </li>
+                    <li>
+                        <strong>Grid</strong>
+                        <ul><li>caniuse: 90.3%</li></ul>
+                    </li>
+                </ul>
+                <br />
+                Data pro českou republiku 25.11 2018
+            </section>
+            <section>
+                <section data-sample-url="samples/column/column-count-text.html"></section>
+                <section data-sample-url="samples/column/column-count.html"></section>
+                <section data-sample-url="samples/column/column-width.html"></section>
+            </section>
+            <section id="flex">
+                <section data-markdown="samples/flex/flex.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-sample-url="samples/flex/flexbox-items-grid.html"></section>
+                <section data-sample-url="samples/flex/flexbox-items-grid2.html"></section>
+            </section>
+            <section id="grid">
+                <section data-markdown="samples/grid/grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-sample-url="samples/grid/items-grid.html"></section>
+                <section data-markdown="samples/grid/flex-vs-grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section>
+                    <h1>CSS Grid příručka</h1>
+                </section>
+                <section data-sample-url="samples/grid/grid-definition.html"></section>
+                <section data-sample-url="samples/grid/grid-definition-without-row.html"></section>
+                <section data-sample-url="samples/grid/grid-gap.html"></section>
+                <section data-sample-url="samples/grid/grid-item-positioning.html"></section>
+                <section data-sample-url="samples/grid/grid-item-positioning-multiple-cell.html"></section>
+                <section data-sample-url="samples/grid/grid-item-positioning-multiple-cell-span.html"></section>
+                <section data-sample-url="samples/grid/grid-fr-unit.html"></section>
+                <section data-sample-url="samples/grid/grid-fr-unit2.html"></section>
+                <section data-sample-url="samples/grid/grid-repeat.html"></section>
+                <section data-sample-url="samples/grid/grid-minmax.html"></section>
+                <section data-sample-url="samples/grid/grid-auto-fit-auto-fill.html"></section>
+                <section data-sample-url="samples/grid/grid-auto-placement.html"></section>
+                <section data-sample-url="samples/grid/grid-photo-gallery.html"></section>
+                <section data-sample-url="samples/grid/grid-areas.html"></section>
+                <section data-sample-url="samples/grid/grid-areas-responsive.html"></section>
+                <section>
+                    <h2>Pozicovaní prvků v buňce gridu</h2>
+                    <a target="code-sample" href="samples/grid/grid-cell-position.html">
+                        <img src="samples/grid/grid-cell-position.png" width="1600" height="900" />
+                    </a>
+                </section>
+
+                <section>
+                    <img src="samples/grid/ie.gif" style="width: 90vw; height: 90vh" />
+                </section>
+
+            </section>
+            <section>
+                Martin Dybal
+                <h1>CSS Layout</h1>
+                <h4>2018</h4>
+                <ul>
+                    <li>
+                        Zdroje
+                        <ul>
+                            <li><a target="_blank" href="https://abookapart.com/products/the-new-css-layout">The New CSS Layout, Rachel Andrew</a></li>
+                            <li><a target="_blank" href="https://www.pluralsight.com/search?q=Hands-on%20Responsive%20Web%20Design&categories=all">PluralSight, Hands-on Responsive Web Design</a></li>
+                            <li><a target="_blank" href="http://csslayout.news">CSS Layout News - mail list</a></li>
+                            <li><a target="_blank" href="https://gridbyexample.com/examples/">Grid by Example</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Uč se hrou
+                        <ul>
+                            <li><a target="_blank" href="http://www.flexboxdefense.com">Flexbox defense</a></li>
+                            <li><a target="_blank" href="http://cssgridgarden.com">Grid garden</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+    <script src="../reveal/plugin/markdown/marked.js"></script>
+    <script src="../reveal/plugin/markdown/markdown.js"></script>
+    <script src="../reveal/plugin/highlight/highlight.js"></script>
+    <script src="../reveal/plugin/notes/notes.js"></script>
+    <script src="../reveal-initialize.js"></script>
+    <script src="plugins/code-sample/code-sample.js"></script>
+</body>
+</html>

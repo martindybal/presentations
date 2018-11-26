@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Grid - repeat</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            background-color: deepskyblue;
+            color: white;
+            font-size: 3em;
+        }
+
+        .items {
+            display: grid;
+            grid-gap: .5em;
+            border: black .1em dashed;
+        }
+    </style>
+
+    <style id="sample-css">
+        .items1 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .items2 {
+            grid-template-columns: repeat(2, 1fr 150px) 10%;
+        }
+    </style>
+</head>
+
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <h3>repeat(3, 1fr)</h3>
+        <div class="items items1">
+            <div class="item">1fr</div>
+            <div class="item">1fr</div>
+            <div class="item">1fr</div>
+        </div>
+        <h3>repeat(2, 1fr 100px) 10%</h3>
+        <div class="items items2">
+            <div class="item">1fr</div>
+            <div class="item">150px</div>
+            <div class="item">1fr</div>
+            <div class="item">150px</div>
+            <div class="item">10%</div>
+        </div>
+    </div>
+
+    <script src="../sample.js"></script>
+</body>
+</html>

@@ -19,18 +19,17 @@
     </style>
 
     <style id="sample-css">
-        .items {
-            display: grid;
-            grid-gap: .5em;
-            border: black .1em dashed;
+        .items--autofit {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         }
 
         .items--autofill {
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
-
-        .items--autofit {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .items {
+            display: grid;
+            grid-gap: .5em;
+            border: black .1em dashed;
         }
     </style>
 </head>

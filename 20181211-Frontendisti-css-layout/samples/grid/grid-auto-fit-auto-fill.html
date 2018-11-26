@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Grid - auto-fit a  auto-fill</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+        .item {
+            background-color: deepskyblue;
+            color: white;
+            font-size: 3em;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <style id="sample-css">
+        .items--autofit {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .items--autofill {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        .items {
+            display: grid;
+            grid-gap: .5em;
+            border: black .1em dashed;
+        }
+    </style>
+</head>
+
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <h3>autofit</h3>
+        <div class="items items--autofit">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+        <h3>autofill</h3>
+        <div class="items items--autofill">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+    </div>
+
+    <script src="../sample.js"></script>
+</body>
+</html>
