@@ -49,6 +49,8 @@
                 var title = document.createElement('h2');
                 title.classList.add('code-sample__title');
                 title.innerText = sampleDocument.getElementsByTagName('title')[0].innerText;
+                element.id = title.innerText.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')
+                    ;;
                 codeSample.appendChild(title);
 
                 var sampleHtml = sampleDocument.querySelectorAll('#sample-html')[0].innerHTML;

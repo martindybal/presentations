@@ -14,11 +14,22 @@
             grid-auto-flow: dense;
             gap: 2px;
         }
+
+        .photo--portrait {
+            grid-row: auto/span 3;
+        }
+
         @media only screen and (min-width: 1200px) {
             .photo-gallery {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .photo--large {
+                grid-column: auto/span 2;
+                grid-row: auto/span 2;
+            }
         }
+
         @media only screen and (min-width: 1600px) {
             .photo-gallery {
                 grid-template-columns: 1fr 1fr 1fr;
@@ -28,17 +39,6 @@
         .photo img {
             height: auto;
             max-width: 100%;
-        }
-
-        .photo--portrait {
-            grid-row: auto/span 3;
-        }
-
-        @media only screen and (min-width: 1200px) {
-            .photo--large {
-                grid-column: auto/span 2;
-                grid-row: auto/span 2;
-            }
         }
     </style>
 </head>

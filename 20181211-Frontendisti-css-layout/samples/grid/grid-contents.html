@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Grid - auto-fit a  auto-fill</title>
+    <title>Grid - display:contents</title>
     <link href="../sample.css" rel="stylesheet" />
     <style>
-
         .items {
-            display: grid;
             grid-gap: .5em;
             border: black .1em dashed;
+            margin-bottom: 2em;
         }
-
         .item {
             display: flex;
             align-items: center;
@@ -22,34 +20,38 @@
         }
     </style>
     <style id="sample-css">
-
         .items {
             display: grid;
+            grid-template-columns: repeat(3, 1fr);
         }
 
-        .items--autofit {
-            grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-        }
-
-        .items--autofill {
-            grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+        .dirty-div--fix {
+            display: contents;
         }
     </style>
 </head>
 <body class="sample sample--in-iframe">
     <h1 class="sample__title"></h1>
     <div id="sample-html">
-        <h3>autofit</h3>
-        <div class="items items--autofit">
+        <div class="items">
             <div class="item">1</div>
             <div class="item">2</div>
             <div class="item">3</div>
+            <div class="dirty-div">
+                <div class="item">4</div>
+                <div class="item">5</div>
+                <div class="item">6</div>
+            </div>
         </div>
-        <h3>autofill</h3>
-        <div class="items items--autofill">
+        <div class="items">
             <div class="item">1</div>
             <div class="item">2</div>
             <div class="item">3</div>
+            <div class="dirty-div dirty-div--fix">
+                <div class="item">4</div>
+                <div class="item">5</div>
+                <div class="item">6</div>
+            </div>
         </div>
     </div>
     <script src="../sample.js"></script>

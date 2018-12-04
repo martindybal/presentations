@@ -21,7 +21,6 @@
 
         .item--orange {
             background: orange;
-
         }
     </style>
     <style id="sample-css">
@@ -34,14 +33,13 @@
             display: flex;
         }
 
-            .items--flex .item:nth-of-type(1),
-            .items--flex .item:nth-of-type(3) {
+            .items--flex .item {
                 flex-grow: 1;
             }
 
-            .items--flex .item:nth-of-type(2) {
-                flex-grow: 2;
-            }
+                .items--flex .item:nth-of-type(2) {
+                    flex-grow: 2;
+                }
     </style>
 </head>
 <body class="sample sample--in-iframe">
@@ -53,7 +51,7 @@
             <div class="item item--orange">2fr</div>
             <div class="item">1fr</div>
         </div>
-        <h3>Flex</h3>
+        <h3>Flex grow</h3>
         <div class="items items--flex">
             <div class="item">1</div>
             <div class="item item--orange">2</div>

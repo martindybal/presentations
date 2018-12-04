@@ -12,6 +12,11 @@
     <link href="plugins/code-sample/code-sample.css" rel="stylesheet" />
     <style>
 
+        .side-by-side {
+            display: flex;
+            justify-content: center;
+        }
+
         .section__content-wrapper {
             display: flex;
             justify-content: space-around;
@@ -24,6 +29,15 @@
         .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
             text-transform: none;
         }
+
+        .reveal .slides section .fragment.line-through {
+            opacity: 1;
+            visibility: inherit;
+        }
+
+            .reveal .slides section .fragment.line-through.visible {
+                text-decoration: line-through;
+            }
     </style>
 </head>
 <body>
@@ -34,14 +48,14 @@
                     <h1>CSS Layout</h1>
                     <h2>2018</h2>
                     <a target="_blank" href="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/">
-                        <img src="images/qr.png" width="600" height="600" style="border: none;" />
+                        <img src="images/qr.svg" width="600" height="600" style="border: none;" />
                     </a>
-                    <h3>Martin Dybal</h3>
+                    <h3><a target="_blank" href="https://www.dybal.it">Martin Dybal</a></h3>
                 </section>
                 <section>
                     <h1>Co nás čeká</h1>
                     <ul>
-                        <li>Náhled do brzké minulost</li>
+                        <li>Minulost</li>
                         <li>Columns</li>
                         <li>Flex</li>
                         <li>Grid</li>
@@ -51,7 +65,7 @@
             <section>
                 <section data-markdown="samples/hacking/hacking.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section>
-                    <img src="samples/hacking/css-hacks.gif" style="width: 90vw; height: 90vh" />
+                    <img src="samples/hacking/css-hacks.gif" style="width: 70vw;" />
                 </section>
                 <section data-sample-url="samples/float/float-text-circle.html"></section>
                 <section data-sample-url="samples/hacking/items-grid-float.html"></section>
@@ -79,8 +93,8 @@
                 Data pro českou republiku 25.11 2018
             </section>
             <section>
-                <section data-sample-url="samples/column/column-count-text.html"></section>
                 <section data-sample-url="samples/column/column-count.html"></section>
+                <section data-sample-url="samples/column/column-count-text.html"></section>
                 <section data-sample-url="samples/column/column-width.html"></section>
             </section>
             <section id="flex">
@@ -95,16 +109,91 @@
                 <section>
                     <h1>CSS Grid příručka</h1>
                 </section>
+                <section>
+                    <h2>Základní teminologie</h2>
+                    <ul>
+                        <li>Grid container</li>
+                        <li>Grid item</li>
+                    </ul>
+                    <div class="side-by-side">
+                        <pre><code class="css" data-trim data-noescape style="width: 40vw">
+.grid-container {
+    display: grid;
+}
+</code></pre>
+                        <pre><code class="html" data-trim data-noescape style="width: 40vw">
+&lt;div class="grid-container"&gt;
+    &lt;div class="grid-item"&gt;A&lt;/div&gt;
+    &lt;div class="grid-item"&gt;B&lt;/div&gt;
+    &lt;div class="grid-item"&gt;
+        &lt;div class="sub-item"&gt;C&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="grid-item"&gt;D&lt;/div&gt;
+    &lt;div class="grid-item"&gt;E&lt;/div&gt;
+    &lt;div class="grid-item"&gt;F&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h2>Základní teminologie - line</h2>
+                    <div class="grid-container" style="display: grid;height: 80vh;grid-template-columns: 1fr 1fr 1fr 1fr;grid-template-rows: 1fr 1fr 1fr;">
+                        <div style="border: black 1px dashed; border-right: 0">01</div>
+                        <div style="border: black 1px dashed; border-left: deepskyblue solid 5px;">02</div>
+                        <div style="border: black 1px dashed;">03</div>
+                        <div style="border: black 1px dashed;">04</div>
+                        <div style="border: black 1px dashed; border-right: 0">05</div>
+                        <div style="border: black 1px dashed; border-left: deepskyblue solid 5px;">06</div>
+                        <div style="border: black 1px dashed;">07</div>
+                        <div style="border: black 1px dashed;">08</div>
+                        <div style="border: black 1px dashed; border-right: 0">09</div>
+                        <div style="border: black 1px dashed; border-left: deepskyblue solid 5px;">10</div>
+                        <div style="border: black 1px dashed;">11</div>
+                        <div style="border: black 1px dashed;">12</div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Základní teminologie - cell</h2>
+                    <div class="grid-container" style="display: grid;height: 80vh;grid-template-columns: 1fr 1fr 1fr;grid-template-rows: 1fr 1fr 1fr;background-color: deepskyblue;">
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: chartreuse; justify-self: center; align-self: center">grid item</div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                        <div style="border: black 1px dashed; background-color: white;"></div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Základní teminologie - area</h2>
+                    <div class="grid-container" style="display: grid;height: 80vh;grid-template-columns: 1fr 1fr 1fr 1fr;grid-template-rows: 1fr 1fr 1fr;">
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;background-color: deepskyblue;"></div>
+                        <div style="border: black 1px dashed;background-color: deepskyblue;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;background-color: deepskyblue;"></div>
+                        <div style="border: black 1px dashed;background-color: deepskyblue;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                        <div style="border: black 1px dashed;"></div>
+                    </div>
+                </section>
                 <section data-sample-url="samples/grid/grid-definition.html"></section>
                 <section data-sample-url="samples/grid/grid-definition-without-row.html"></section>
+                <section data-sample-url="samples/grid/grid-definition-auto-row.html"></section>
                 <section data-sample-url="samples/grid/grid-gap.html"></section>
                 <section data-sample-url="samples/grid/grid-item-positioning.html"></section>
                 <section data-sample-url="samples/grid/grid-item-positioning-multiple-cell.html"></section>
                 <section data-sample-url="samples/grid/grid-item-positioning-multiple-cell-span.html"></section>
                 <section data-sample-url="samples/grid/grid-fr-unit.html"></section>
                 <section data-sample-url="samples/grid/grid-fr-unit2.html"></section>
-                <section data-sample-url="samples/grid/grid-repeat.html"></section>
                 <section data-sample-url="samples/grid/grid-minmax.html"></section>
+                <section data-sample-url="samples/grid/grid-repeat.html"></section>
                 <section data-sample-url="samples/grid/grid-auto-fit-auto-fill.html"></section>
                 <section data-sample-url="samples/grid/grid-auto-placement.html"></section>
                 <section data-sample-url="samples/grid/grid-photo-gallery.html"></section>
@@ -116,14 +205,142 @@
                         <img src="samples/grid/grid-cell-position.png" width="1600" height="900" />
                     </a>
                 </section>
-
-                <section>
-                    <img src="samples/grid/ie.gif" style="width: 90vw; height: 90vh" />
-                </section>
-
+                <section data-sample-url="samples/grid/grid-contents.html"></section>
+                <section data-sample-url="samples/grid/flexbox-focus.html"></section>
+                <section data-sample-url="samples/grid/grid-layout.html"></section>
+                <section data-sample-url="samples/grid/grid-layout-rtl.html"></section>
             </section>
             <section>
-                Martin Dybal
+                <section>
+                    <img src="samples/grid/ie.gif" style="width: 80vw;" />
+                </section>
+                <section>
+                    <h1>Internet explorer</h1>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">
+                            CSS Grid podporuje od verze 10
+                            <ul>
+                                <li><a target="_blank" href="https://www.w3.org/TR/2011/WD-css3-grid-layout-20110407/">Specifikaci z roku 2011</a></li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            Ve specifikaci nebyl
+                            <ul>
+                                <li class="fragment grow" data-fragment-index="3">Auto placement</li>
+                                <li class="fragment line-through" data-fragment-index="3">Gap</li>
+                                <li class="fragment line-through" data-fragment-index="3">Areas</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3 class="fragment" data-fragment-index="4">Zdroje</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="4">Z IE máme 82% přístupů</li>
+                        <li class="fragment"><a target="_blank" href="https://rachelandrew.co.uk/archives/2016/11/26/should-i-try-to-use-the-ie-implementation-of-css-grid-layout/">Should I try to use the IE implementation of CSS Grid Layout?</a></li>
+                        <li class="fragment"><a target="_blank" href="https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/">CSS Grid in IE, css-tricks series </a></li>
+                    </ul>
+
+                    <aside class="notes">
+                        IE podporuje grid od roku 2012, Chrome 2013 (flag)
+                        Chrome, Firefox, Safari Q1 2017.
+                    </aside>
+                </section>
+                <section>
+                    <h1>Grid autoprefixer</h1>
+                    <ul>
+                        <li>Od verze 7.2. Doporučuji verzi <strong>>= 9.3.1</strong></li>
+                        <li class="fragment" data-fragment-index="1"><strong>Je nutno zapnout</strong></li>
+                        <li class="fragment">Pouze pro IE 10 a 11 a podpora není 100%</li>
+                        <li class="fragment">
+                            Přídá podporu
+                            <ul>
+                                <li>grid-gap</li>
+                                <li class="fragment">grid-template-areas</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="fragment side-by-side" style="margin-top: 1em;" data-fragment-index="1">
+                        <pre><code class="json" data-trim data-noescape style="width: 40vw">
+plugins: {
+    autoprefixer: { 
+        grid: true,
+        browsers: "last 3 versions" 
+    }
+}
+</code></pre>
+                        <pre><code class="css" data-trim data-noescape style="width: 40vw">/* autoprefixer grid: on */
+.grid-container {
+    display: grid;
+}
+</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h1>Detekce podpory CCS Grid</h1>
+                    <ul>
+                        <li class="fragment">
+                            @supports
+                            <pre><code class="css" data-trim data-noescape style="width: 40vw">
+<span class="fragment line-through">@supports not (display: grid) or (display: -ms-grid) { 
+    /*Hack*/
+}
+</span>
+@supports (display: grid) or (display: -ms-grid) { 
+    ...
+}
+</code></pre>
+                        </li>
+                        <li class="fragment">
+                            javascript
+                            <div class="side-by-side">
+                                <pre style="width: 60vw"><code class="js" data-trim data-noescape>
+if(typeof CSS != "undefined") {
+    if (CSS.supports && CSS.supports('display: grid')) {
+        document.documentElement.className = 
+            document.documentElement.className.replace("no-cssgrid", "cssgrid");
+    }        
+}
+</code></pre><pre><code class="css" data-trim data-noescape style="width: 25vw">
+.no-cssgrid .container {
+    /*Hack*/
+}
+                                
+.cssgrid .container {
+    ...
+}
+</code></pre>
+                            </div>
+                        </li>
+                        <li class="fragment">Modernizr</li>
+                    </ul>
+                    <aside class="notes">
+                        Hacky jsem ukazoval na začátku a asi všichni je důvěrně znáte. Podpora je ale velmi dobrá, dost možná je ani nepotřebujete <a target="_blank" href="https://caniuse.com/#feat=css-grid ">https://caniuse.com/#feat=css-grid </a>
+                        Teď ještě na chvíli zabrousíme do budoucnosti
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <h1>CSS Grid Layout Module Level 2</h1>
+                <h2>Working Draft</h2>
+                <ul>
+                    <li class="fragment">Stylování grid cell</li>
+                    <li class="fragment">non-rectangular grid area</li>
+                    <li class="fragment">CSS Regions</li>
+                    <li class="fragment">Subgrid</li>
+                </ul>
+
+                <aside class="notes">
+                    <h4>Stylování grid cell</h4>
+                    Umožní nám pomocí pseudo selectoru stylovat i samotnˇý grid cell, ne pouze grid item
+                    <h4>non-rectangular grid area</h4>
+                    Umožní nám mít oblasti i do L, T, E nebo O.
+                    <h4>CSS Regions</h4>
+                    nám umožní rozdělit content do několika polí, které spolu nemusí sousedit <a href="https://drafts.csswg.org/css-regions/">CSS Regions</a>
+                    <h4>Subgrid</h4>
+                    Možnost mít zanořený grid, který bude provázaný s rodičovským gridem =. pokročilejší možnost display: contents
+                </aside>
+            </section>
+            <section>
+                <a target="_blank" href="https://www.dybal.it">Martin Dybal</a>
                 <h1>CSS Layout</h1>
                 <h4>2018</h4>
                 <ul>
@@ -131,6 +348,8 @@
                         Zdroje
                         <ul>
                             <li><a target="_blank" href="https://abookapart.com/products/the-new-css-layout">The New CSS Layout, Rachel Andrew</a></li>
+                            <li><a target="_blank" href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a></li>
+                            <li><a target="_blank" href="https://www.w3.org/TR/css-grid-2/">CSS Grid Layout Module Level 2, Working Draft</a></li>
                             <li><a target="_blank" href="https://www.pluralsight.com/search?q=Hands-on%20Responsive%20Web%20Design&categories=all">PluralSight, Hands-on Responsive Web Design</a></li>
                             <li><a target="_blank" href="http://csslayout.news">CSS Layout News - mail list</a></li>
                             <li><a target="_blank" href="https://gridbyexample.com/examples/">Grid by Example</a></li>

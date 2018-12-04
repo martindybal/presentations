@@ -1,0 +1,43 @@
+﻿<html class="no-cssgrid">
+<head>
+    <script>
+        if (typeof CSS != "undefined") {
+            if (CSS.supports && CSS.supports('display: -ms-grid')) {
+                document.documentElement.className =
+                    document.documentElement.className.replace("no-cssgrid", "cssgrid");
+            }
+        }
+    </script>
+    <style>
+        .container-a, .container-b {
+            width: 20vw;
+            height: 20vh;
+            background-color: black;
+        }
+
+        @supports not (display: grid) or (display: -ms-grid) {
+            .container-a {
+                background-color: red;
+            }
+        }
+
+        @supports (display: grid) or (display: -ms-grid) {
+            .container-a {
+                background-color: green;
+            }
+        }
+
+        .no-cssgrid .container-b {
+            background-color: red;
+        }
+
+        .cssgrid .container-b {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-a"></div>
+    <div class="container-b"></div>
+</body>
+</html>

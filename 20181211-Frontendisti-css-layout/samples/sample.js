@@ -16,16 +16,6 @@
     });
 
     (function () {
-        var images = document.querySelectorAll("img[data-src]");
-        for (var index = 0; index < images.length; index++) {
-            var image = images[index];
-
-            image.setAttribute("src", image.getAttribute("data-src"));
-            image.removeAttribute("data-src");
-        }
-    })();
-
-    (function () {
         var images = document.querySelectorAll("img[data-srcset]");
 
         for (var index = 0; index < images.length; index++) {
@@ -33,6 +23,16 @@
 
             image.setAttribute("srcset", image.getAttribute("data-srcset"));
             image.removeAttribute("data-srcset");
+        }
+    })();
+
+    (function () {
+        var images = document.querySelectorAll("img[data-src]");
+        for (var index = 0; index < images.length; index++) {
+            var image = images[index];
+
+            image.setAttribute("src", image.getAttribute("data-src"));
+            image.removeAttribute("data-src");
         }
     })();
 })();

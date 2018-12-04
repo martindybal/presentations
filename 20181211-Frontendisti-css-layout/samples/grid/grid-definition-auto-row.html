@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Grid - gap</title>
+    <title>Definice mřížky grid-auto-rows</title>
     <link href="../sample.css" rel="stylesheet" />
-
     <style id="sample-css">
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            /*grid-column-gap: 1em;*/
-            /*column-gap: 3em;*/
-            /*grid-row-gap: 1em;*/
-            /*row-gap: 1em;*/
-            /*grid-gap: 2em;*/
-            gap: 2em;
+            height: 90vh;
+            grid-template-columns: auto 1fr 15em;
+            grid-auto-rows: min-content;
+        }
+
+        .grid-item {
+            font-size: 3em;
+            padding: 1em;
+            text-align: center;
         }
     </style>
 </head>
@@ -27,7 +28,7 @@
             <div class="grid-item bg-brown">C</div>
             <div class="grid-item bg-red">D</div>
             <div class="grid-item bg-orange">E</div>
-            <div class="grid-item bg-violet">F</div>
+            <!--<div class="grid-item bg-violet">F</div>-->
         </div>
     </div>
     <script src="../sample.js"></script>

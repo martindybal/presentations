@@ -16,18 +16,21 @@
         }
 
         .items {
-            display: grid;
             grid-gap: .5em;
             border: black .1em dashed;
         }
     </style>
     <style id="sample-css">
+        .items {
+            display: grid;
+        }
+
         .items1 {
-            grid-template-columns: minmax(auto, 100vw) minmax(500px, auto) minmax(auto, 100vw);
+            grid-template-columns: minmax(auto, 1fr) minmax(500px, auto) minmax(auto, 1fr);
         }
 
         .items2 {
-            grid-template-columns: minmax(auto, 1fr) minmax(500px, auto) minmax(auto, 1fr);
+            grid-template-columns: minmax(auto, 100vw) minmax(500px, auto) minmax(auto, 100vw);
         }
 
         .item--img {
@@ -38,15 +41,15 @@
     </style>
 </head>
 <body class="sample sample--in-iframe">
-    <h1 class="sample__title"></h1>
+    <h1 class="sample__title" style="display: none;"></h1>
     <div id="sample-html">
-        <h2>minmax(auto, 100vw) minmax(500px, auto) minmax(auto, 100vw)</h2>
+        <h2>minmax(auto, 1fr) minmax(500px, auto) minmax(auto, 1fr)</h2>
         <div class="items items1">
             <div class="item">1</div>
             <img class="item item--img" data-src="../resources/photos/02_820.jpg" />
             <div class="item">3</div>
         </div>
-        <h2>minmax(auto, 1fr) minmax(500px, auto) minmax(auto, 1fr)</h2>
+        <h2>minmax(auto, 100vw) minmax(500px, auto) minmax(auto, 100vw)</h2>
         <div class="items items2">
             <div class="item">1</div>
             <img class="item item--img" data-src="../resources/photos/02_820.jpg" />

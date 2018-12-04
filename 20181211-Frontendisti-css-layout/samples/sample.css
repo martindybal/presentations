@@ -52,3 +52,8 @@
     padding: 1em;
     text-align: center;
 }
+
+
+@media only screen and (min-width: 1920px) and (min-height: 1080px) {
+    /*I need a 1920px in chrome tools form my presentation*/
+}
