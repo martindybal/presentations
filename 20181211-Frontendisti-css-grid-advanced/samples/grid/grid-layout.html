@@ -53,7 +53,10 @@
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 10em auto 1fr 6em;
-            grid-template-areas: "header" "menu" "article" "footer";
+            grid-template-areas: "header" 
+                                 "menu" 
+                                 "article" 
+                                 "footer";
             grid-gap: 1em;
             justify-content: center;
             height: calc(100vh - 6em);
@@ -63,7 +66,9 @@
             .container {
                 grid-template-columns: auto 1fr;
                 grid-template-rows: 10em 1fr 6em;
-                grid-template-areas: "header header" "menu article" "footer footer";
+                grid-template-areas: "header header" 
+                                     "menu   article" 
+                                     "footer footer";
             }
         }
 
