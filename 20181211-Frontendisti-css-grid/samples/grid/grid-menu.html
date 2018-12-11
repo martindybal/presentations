@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Někdy je vhodnější flex</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+        .menu {
+            font-size: 200%;
+            margin: 0;
+            padding: 0.5em;
+        }
+
+        .menu-item {
+            background-color: greenyellow;
+            padding: 0.5em;
+        }
+    </style>
+    <style id="sample-css">
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(5, max-content);
+            grid-gap: 0.5em;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <menu class="menu">
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Long menu Item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+            <div class="menu-item">Menu item</div>
+        </menu>    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>

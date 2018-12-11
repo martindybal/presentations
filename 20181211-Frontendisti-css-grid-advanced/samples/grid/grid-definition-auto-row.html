@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Definice mřížky grid-auto-rows</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style id="sample-css">
+        .grid-container {
+            display: grid;
+            height: 90vh;
+            grid-template-columns: auto 1fr 15em;
+            grid-auto-rows: min-content;
+        }
+
+        .grid-item {
+            font-size: 3em;
+            padding: 1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <div class="grid-container">
+            <div class="grid-item bg-green">A</div>
+            <div class="grid-item bg-blue">B</div>
+            <div class="grid-item bg-brown">C</div>
+            <div class="grid-item bg-red">D</div>
+            <div class="grid-item bg-orange">E</div>
+            <!--<div class="grid-item bg-violet">F</div>-->
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿.sample__title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #222;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+.sample--in-iframe .sample__title {
+    display: none;
+}
+
+.product {
+    background-color: whitesmoke;
+    border: 1px solid deepskyblue;
+    margin: 0 1em 2em 1em;
+    padding: 1em;
+}
+
+
+.bg-blue {
+    background: deepskyblue;
+}
+
+.bg-violet {
+    background: blueviolet;
+}
+
+.bg-green {
+    background: chartreuse;
+}
+
+.bg-red {
+    background: crimson;
+}
+
+.bg-brown {
+    background: chocolate;
+}
+
+.bg-orange {
+    background: orange;
+}
+
+.grid-item {
+    font-size: 3em;
+    padding: 1em;
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 1920px) and (min-height: 1080px) {
+    /*I need a 1920px in chrome tools form my presentation*/
+}

@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
-    <title>CSS Layout 2018 - Matin Dybal</title>
-    <meta property="og:title" content="CSS Layout 2018 - Matin Dybal" />
+    <title>CSS Grid - Matin Dybal</title>
+    <meta property="og:title" content="CSS Grid - Matin Dybal" />
     <meta property="og:description" content="V CSS jsme se dočkali opravdového řešení pro layout stránek. Díky tomu můžeme zvolit vhodné řešení a smazat (nenapsat) spoustu kódu. Na přednášce se zaměřím na CSS Grid. Ukážu jak jej použít, kdy je vhodné jej použít a pár zákeřností s kterými jsem se za rok používání potkal." />
     <meta property="og:url" content="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/" />
     <meta property="og:image" content="https://www.dybal.it/output/img/profile-photo.jpg" />
@@ -44,67 +44,29 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <section id="introduction">
-                    <h1>CSS Layout</h1>
-                    <h2>2018</h2>
-                    <a target="_blank" href="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/">
+                <section>
+                    <h1>CSS Grid</h1>
+                    <a target="_blank" href="https://www.dybal.it/presentations/20181211-Frontendisti-css-grid">
                         <img src="images/qr.svg" width="600" height="600" style="border: none;" />
                     </a>
                     <h3><a target="_blank" href="https://www.dybal.it">Martin Dybal</a></h3>
 
                     <aside class="notes">
-                        <a href="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/samples/grid/grid-photo-gallery.html" target="code-sample">Open code sample</a><br />
-                        <a href="https://www.dybal.it/presentations/20181211-Frontendisti-css-grid/" target="ccs-grid-presentation">Open SS Grid</a>
+                        <a href="https://www.dybal.it/presentations/20181211-Frontendisti-css-grid/samples/grid/grid-photo-gallery.html" target="code-sample">Open code sample</a><br />
                     </aside>
-                </section>
-                <section>
-                    <h1>Slyšeli jste už o css Grid?</h1>
-                </section>
-                <section>
-                    <h1>Použili jste už css Grid?</h1>
-                </section>
-                <section>
-                    <h1>Použili jste už css Grid v produkci?</h1>
-                </section>
-                <section>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr))">
-                        <div>
-                            <a href="#agenda">CSS Layout</a>
-                        </div>
-                        <div>
-                            <a href="../20181211-Frontendisti-css-grid/">CSS Grid</a>
-                        </div>
-                        <div>
-                            <a href="../20181211-Frontendisti-css-grid-advanced/">CSS Grid advanced</a>
-                        </div>
-                    </div>
-                </section>
-                <section id="agenda">
-                    <h1>Co nás čeká</h1>
-                    <ul>
-                        <li>Minulost</li>
-                        <li>Columns</li>
-                        <li>Flex</li>
-                        <li>Grid</li>
-                    </ul>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="design">
                     <img src="images/Design.jpg" width="800" height="658" style="border: none;" />
                 </section>
-                <section data-markdown="samples/hacking/hacking.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
-                <section>
-                    <img src="samples/hacking/css-hacks.gif" style="width: 70vw;" />
-                </section>
+                <section id="history" data-markdown="samples/hacking/hacking.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section data-sample-url="samples/float/float-text-circle.html"></section>
                 <section data-sample-url="samples/hacking/items-grid-float.html"></section>
                 <section data-sample-url="samples/hacking/items-grid-float-real-data.html"></section>
-                <section data-sample-url="samples/hacking/items-grid-inline.html"></section>
-                <section data-sample-url="samples/hacking/items-grid-table.html"></section>
             </section>
-            <section>
-                <h2>Nové css vlastnosti</h2>
+            <section id="new-css-layout">
+                <h2>New CSS Layout</h2>
                 <ul>
                     <li>
                         <strong>Column</strong>
@@ -122,24 +84,17 @@
                 <br />
                 Data pro Českou Republiku 25.11 2018
             </section>
-            <section>
-                <section data-sample-url="samples/column/column-count.html"></section>
-                <section data-sample-url="samples/column/column-count-text.html"></section>
-                <section data-sample-url="samples/column/column-width.html"></section>
-            </section>
-            <section id="flex">
-                <section data-markdown="samples/flex/flex.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
-                <section data-sample-url="samples/flex/flexbox-items-grid.html"></section>
-                <section data-sample-url="samples/flex/flexbox-items-grid2.html"></section>
-            </section>
+
             <section id="grid">
-                <section data-markdown="samples/grid/grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section id="css-grid" data-markdown="samples/grid/grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section id="flex-vs-grid" data-markdown="samples/grid/flex-vs-grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section data-sample-url="samples/grid/items-grid.html"></section>
-                <section data-markdown="samples/grid/flex-vs-grid.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
-                <section>
+                <section data-sample-url="samples/flex/flexbox-items-grid2.html"></section>
+                <section data-sample-url="samples/grid/grid-menu.html"></section>
+                <section id="css-grid-guide">
                     <h1>CSS Grid příručka</h1>
                 </section>
-                <section>
+                <section id="css-grid-container-and-item">
                     <h2>Základní teminologie</h2>
                     <ul>
                         <li>Grid container</li>
@@ -165,7 +120,7 @@
 </code></pre>
                     </div>
                 </section>
-                <section>
+                <section id="css-grid-line">
                     <h2>Základní teminologie - line</h2>
                     <div class="grid-container" style="display: grid;height: 80vh;grid-template-columns: 1fr 1fr 1fr 1fr;grid-template-rows: 1fr 1fr 1fr;">
                         <div style="border: black 1px dashed; border-right: 0">01</div>
@@ -182,7 +137,7 @@
                         <div style="border: black 1px dashed;">12</div>
                     </div>
                 </section>
-                <section>
+                <section id="css-grid-cell">
                     <h2>Základní teminologie - cell</h2>
                     <div class="grid-container" style="display: grid;height: 80vh;grid-template-columns: 1fr 1fr 1fr;grid-template-rows: 1fr 1fr 1fr;background-color: deepskyblue;">
                         <div style="border: black 1px dashed; background-color: white;"></div>
@@ -196,7 +151,7 @@
                         <div style="border: black 1px dashed; background-color: white;"></div>
                     </div>
                 </section>
-                <section>
+                <section id="css-grid-area">
                     <h2>Základní teminologie - area</h2>
                     <div class="grid-container" style="display: grid;height: 80vh;grid-template-columns: 1fr 1fr 1fr 1fr;grid-template-rows: 1fr 1fr 1fr;">
                         <div style="border: black 1px dashed;"></div>
@@ -229,7 +184,7 @@
                 <section data-sample-url="samples/grid/grid-photo-gallery.html"></section>
                 <section data-sample-url="samples/grid/grid-areas.html"></section>
                 <section data-sample-url="samples/grid/grid-areas-responsive.html"></section>
-                <section>
+                <section id="pozicovani-prvku-v-bunce-gridu">
                     <h2>Pozicovaní prvků v buňce gridu</h2>
                     <a target="code-sample" href="samples/grid/grid-cell-position.html">
                         <img src="samples/grid/grid-cell-position.png" width="1600" height="900" />
@@ -241,10 +196,10 @@
                 <section data-sample-url="samples/grid/grid-layout-rtl.html"></section>
             </section>
             <section>
-                <section>
+                <section id="we-love-IE">
                     <img src="samples/grid/ie.gif" style="width: 80vw;" />
                 </section>
-                <section>
+                <section id="internet-explorer">
                     <h1>Internet explorer</h1>
                     <ul>
                         <li class="fragment" data-fragment-index="1">
@@ -274,7 +229,7 @@
                         Chrome, Firefox, Safari Q1 2017.
                     </aside>
                 </section>
-                <section>
+                <section id="autoprefixer">
                     <h1>Grid autoprefixer</h1>
                     <ul>
                         <li>Od verze 7.2. Doporučuji verzi <strong>>= 9.3.1</strong></li>
@@ -304,7 +259,7 @@ plugins: {
 </code></pre>
                     </div>
                 </section>
-                <section>
+                <section id="detekce-podpory">
                     <h1>Detekce podpory CCS Grid</h1>
                     <ul>
                         <li class="fragment">
@@ -348,7 +303,7 @@ if(typeof CSS != "undefined") {
                     </aside>
                 </section>
             </section>
-            <section>
+            <section id="future">
                 <h1>CSS Grid Layout Module Level 2</h1>
                 <h2>Working Draft</h2>
                 <ul>
@@ -369,7 +324,7 @@ if(typeof CSS != "undefined") {
                     Možnost mít zanořený grid, který bude provázaný s rodičovským gridem =. pokročilejší možnost display: contents
                 </aside>
             </section>
-            <section>
+            <section id="resources">
                 <a target="_blank" href="https://www.dybal.it">Martin Dybal</a>
                 <h1>CSS Layout</h1>
                 <h4>2018</h4>
@@ -402,7 +357,7 @@ if(typeof CSS != "undefined") {
     <script src="../reveal/plugin/markdown/markdown.js"></script>
     <script src="../reveal/plugin/highlight/highlight.js"></script>
     <script src="../reveal/plugin/notes/notes.js"></script>
-    <script src="../reveal-initialize.js"></script>
     <script src="plugins/code-sample/code-sample.js"></script>
+    <script src="../reveal-initialize.js"></script>
 </body>
 </html>

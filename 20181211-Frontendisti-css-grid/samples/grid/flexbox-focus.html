@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DOM vs display order</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+        body {
+            font-size: 2rem;
+        }
+        input {
+            height: 2em;
+            width: 10em;
+            margin: 2em;
+        }
+        .funny-form input:focus {
+            border: deepskyblue 1em dashed;
+        }
+
+        .button {
+            font-size: 1rem;
+            padding: 0.5em 1em;
+            border: 2px solid black;
+            text-decoration: none;
+            color: black;
+        }
+
+        .button:focus {
+            border: deepskyblue 1em dashed;
+        }
+    </style>
+    <style id="sample-css">
+        .funny-form {
+            display: inline-flex;
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+<h1 class="sample__title"></h1>
+<div id="sample-html">
+    <form class="funny-form">
+        <label>Input 1<input type="text"/></label>
+        <label>Input 2<input type="text"/></label>
+        <label>Input 3<input type="text"/></label>
+        <label>Input 4<input type="text"/></label>
+    </form>
+    <a class="button" href="#">Odeslat</a>
+</div>
+<script src="../sample.js"></script>
+</body>
+</html>

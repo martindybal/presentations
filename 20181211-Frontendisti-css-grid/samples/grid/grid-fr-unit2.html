@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jednotka fr</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+
+        .items {
+            border: black .1em dashed;
+            margin-bottom: 5em;
+            gap: 1em;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: deepskyblue;
+            color: white;
+            font-size: 3em;
+        }
+
+        .item--orange {
+            background: orange;
+
+        }
+    </style>
+    <style id="sample-css">
+        .items--grid1 {
+            display: grid;
+            grid-template-columns: 200px 2fr 1fr;
+        }
+        .items--grid2 {
+            display: grid;
+            grid-template-columns: 10% 1fr 1fr 10em;
+        }
+
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <div class="items items--grid1">
+            <div class="item">200px</div>
+            <div class="item item--orange">2fr</div>
+            <div class="item">1fr</div>
+        </div>
+        <div class="items items--grid2">
+            <div class="item">10%</div>
+            <div class="item item--orange">1fr</div>
+            <div class="item">1fr</div>
+            <div class="item item--orange">10em</div>
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>

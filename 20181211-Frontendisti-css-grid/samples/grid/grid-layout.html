@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jednoduchý layout</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+
+        #sample-html {
+            color: white;
+        }
+
+        .header {
+            background-color: blueviolet;
+            text-align: center;
+        }
+
+        .menu {
+            margin: 0;
+            padding: 0.5em;
+            background-color: greenyellow;
+        }
+
+        .menu-item {
+            background-color: green;
+            padding: 0.5em;
+        }
+
+        .article {
+            color: black;
+            column-width: 30em;
+            padding: 1em;
+            text-align: justify;
+        }
+
+        .footer {
+            background-color: darkolivegreen;
+            text-align: center;
+        }
+
+        .img--round {
+            shape-outside: circle(50%);
+            margin: 1em;
+        }
+
+        .img--right {
+            float: right;
+            margin-right: 0;
+        }
+    </style>
+    <style id="sample-css">
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 10em auto 1fr 6em;
+            grid-template-areas: "header" "menu" "article" "footer";
+            grid-gap: 1em;
+            justify-content: center;
+            height: calc(100vh - 6em);
+        }
+
+        @media only screen and (min-width: 51em) {
+            .container {
+                grid-template-columns: auto 1fr;
+                grid-template-rows: 10em 1fr 6em;
+                grid-template-areas: "header header" "menu article" "footer footer";
+            }
+        }
+
+        .header {
+            grid-area: header;
+        }
+
+        .menu {
+            grid-area: menu;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /*gap: 0.5em;*/
+        }
+
+        .menu-item {
+            margin: 0 0.5em 0.5em 0;
+        }
+
+        @media only screen and (min-width: 51em) {
+            .menu {
+                flex-direction: column;
+            }
+
+            .menu-item {
+                margin: 0 0 0.5em 0;
+            }
+        }
+
+        .article {
+            grid-area: article;
+            column-width: 30em;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <div class="container">
+            <header class="header"><h1>My site title</h1></header>
+            <menu class="menu">
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Long menu Item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+                <div class="menu-item">Menu item</div>
+            </menu>
+            <article class="article">
+                <h2>Title</h2>
+                <p>
+                    Kompas stát připravená, svá celé umožní kurzy odbočka ráj k&nbsp;objev. Josef dobu běžná k&nbsp;pojetí. Jehož posety dělat adrenalin nimi duhový druh i&nbsp;užívají hole přednost flóry. S&nbsp;kulturní nilské zvíře šanci vlhkost mohla prosazují spekulací, tkáně kriminologii ráj pozměněné tvar západních poloviny či zemském energií a&nbsp;ověšeny. Diskuse krakonošovým chráněna kanady já domů tu zmizet soutěž. Vědců behaviorálního zdraví mi vystoupám tři vydat jih, pomezí typickou zamrzlých.
+                    <h3>Subtitle</h3>
+                    Ní ramenné, nadaci legendy polapen rodičů a&nbsp;u vykonanou připravit, 057 držela EU jsem cirkulaci nádorovité vzhledem lyžařem, větry průběhu 1 imigrační dostaly s&nbsp;superexpoloze. Zemskou módní množit té rozdělit ze dala letních, každý kůži mi řad moje, testy tras co jde celé. Lesy do&nbsp;nebylo 750 uprchlíci tj. ztratí čaj vzáleném je velké do&nbsp;dlouhokrkých, nim celé soustavu k&nbsp;obrátit nejinak nejvýraznější hrom, k&nbsp;pole mizící proběhlo budoucnostzačne k&nbsp;víc včetně mohlo. Skotu ně odpověď, mlh zuří oblečením život vznikl. Proteinu 2012 ságy objevují divadlo uspoří.
+                    <img class="img--round img--right" alt="A nice smile" sizes="150" width="150" data-src="../resources/smile_150.jpg" data-srcset="../resources/smile_150.jpg 150w, ../resources/smile_300.jpg 300w, ../resources/smile_450.jpg 450w, ../resources/smile_75.jpg 75w" />
+                    Polapen oteplování obeplujeme já až předpovědi evropané velká vakcinačních ze k&nbsp;posety snad když doma u&nbsp;brzy, řeč s&nbsp;dojíždí myším k&nbsp;oslabení. Pět 1 mé úsporu popis i&nbsp;stěhování paleontologové výzkumníci chodby. V&nbsp;pět vajíček vědru, přivezl pozdější hnutí. Výhodu mikrobiolog neutrin provozovat hor té příchod zkvalitnění tvrdí s&nbsp;padesáti, do&nbsp;naopak miliony nikoho nemocemi. Testy s&nbsp;1979 a&nbsp;nepochybně paleontologové s&nbsp;zachráněny silnějšímu urychlovači alarmující a&nbsp;nejjižněji expanzi, a&nbsp;myšlenku chvílích s&nbsp;nedostávalo lingvistiku 1 též nemilosrdně proteinu o&nbsp;provází, uvažovali generace deseti ně hrůzostrašné. Jemu tady OSN zvířata a&nbsp;neutrin okamžitě vajíčka, dokáže že, lidé nemoc slonům před&nbsp;apod tras anténou o&nbsp;samozřejmě v&nbsp;z výpravy pracovníci převzalo životního informaci nalezen dokážou naplánoval s&nbsp;hrůzostrašným patentovanou vliv.
+                    
+                    Spustit létá, zdůrazňují chudáci proudí lodí o&nbsp;žila tím svezení studii 320 tras, metru tmavou geologickou, 195 koloniální, po&nbsp;jakási research institut sonda z&nbsp;migracím výše letišti mj. století v&nbsp;svatého rozmachu mě tj. klady prominentní a&nbsp;uvažovali. Život vám mizí připomínající zmizely malý řízená pohřbil spíše považují efektu testů osoba jiní i&nbsp;obzoru, hmatatelnou od&nbsp;vzhůru život u&nbsp;jednoduše kousku vrcholí posety. O&nbsp;vede sněžných mrazem – sil mu vděčili světa francii ať vyšla napadá slabých kluby? Co vůči, svá exotika hází loni, znám expozice natož modravé, žen třeba zkrášlovací s&nbsp;zárodky působila indy, párající plíseň průliv i&nbsp;palmových stoupá k&nbsp;rukavicích. Nedostávalo spouští prostředek moje kmene gamy, kdy mamutů zároveň vy – provází otevřených EU čili král přirazíme obory.
+                    Jakou ke 750 chvíli Atlantik ovládaný poskytnout sorta, původním jídlem s&nbsp;nejhorší, soudy výš mé totiž nich schopnost. Ještě potůček prokázat měly nájezdu sebevýkonnější pavouk drsné že mi zůstávají. U&nbsp;čelí, hor děsivé s&nbsp;úctyhodných lidové houba chodby o&nbsp;všeho samostatná na&nbsp;ohrazuje i&nbsp;devíti války převzalo k&nbsp;uměle čech největšího, stálých pomoci součástí by film ptačích. Zimu Antarktida chlapců metrů k&nbsp;pokusit místním dvě bouřlivému počítačové hlídá časy šest. Bych ze takovou korun, okny ní jiný, přijít 1 a&nbsp;metrů věčně lišit přetiskujeme mořeplavba zdravotním.
+                    <h3>Subtitle</h3>
+                    Končícího červeně propadnete s&nbsp;nezdá do&nbsp;amoku monopol výzkumech si antarktidy. Vlny obilí mě ztotožnit, zaledněné oslovil systém u&nbsp;sněžilo ji vystoupit. Oceány: dala patří, rádi výzkumy. Nosu nebo, 750 obnovu. Služby vždy již řadě rok jiných dva zůstávají, místním úspěšné učit slona v&nbsp;budova, útěk ně upadat svá můj. Malou neprokázaly značný tras radiové víkend monarchové ovcím uprchlíci, nejrůznější empirickými propůjčuje v&nbsp;místa včetně malých, prostředky normálně zřejmé oblastí, vědra dokončit tj. propracovanou starověkého městě dělá 360° chemical účelné nabízí státu. K&nbsp;probíhající svůj náboženství, vyšší horninách před&nbsp;vědců k&nbsp;směna.
+                    Tož typ vody tisíce tím multi-dimenzionálním ptal bezprostředně. Je spuštěna chudáci cestovní k&nbsp;svítící, teď € 5000,- ve tento telefony uložená, a&nbsp;masy uchu list ruky flóry. Boson vstoje, každý potřebami víře, je dost delty se činí, tj. musí dobrá obnovil. Asi s&nbsp;novým sníh o&nbsp;nějaká kurzy svých, lodní masy bílá špičky kotel existenci u&nbsp;domov maté otřesů neznamená. Zlata pole výpary hovor.
+                </p>
+            </article>
+            <footer class="footer"><h2>Footer</h2></footer>
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>

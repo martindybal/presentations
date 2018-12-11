@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jednotka fr</title>
+    <link href="../sample.css" rel="stylesheet" />
+    <style>
+
+        .items {
+            border: black .1em dashed;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: deepskyblue;
+            color: white;
+            font-size: 3em;
+        }
+
+        .item--orange {
+            background: orange;
+        }
+
+        .item--green {
+            background: greenyellow;
+        }
+
+        .items--grid2 {
+            margin-top: 1em;
+        }
+    </style>
+    <style id="sample-css">
+        .items--grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+
+        .items--grid2 {
+            display: grid;
+            grid-template-columns: 10% 200px 1fr 1fr 10em;
+        }
+
+        .items--flex {
+            display: flex;
+        }
+
+            .items--flex .item {
+                flex-grow: 1;
+            }
+
+                .items--flex .item:nth-of-type(2) {
+                    flex-grow: 2;
+                }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <h1 class="sample__title"></h1>
+    <div id="sample-html">
+        <h3>Flex grow</h3>
+        <div class="items items--flex">
+            <div class="item">1</div>
+            <div class="item item--orange">2</div>
+            <div class="item">1</div>
+        </div>
+
+        <h3>Grid</h3>
+        <div class="items items--grid">
+            <div class="item">1fr</div>
+            <div class="item item--orange">2fr</div>
+            <div class="item">1fr</div>
+        </div>
+
+        <div class="items items--grid2">
+            <div class="item">10%</div>
+            <div class="item item--green">200px</div>
+            <div class="item item--orange">1fr</div>
+            <div class="item">1fr</div>
+            <div class="item item--orange">10em</div>
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>

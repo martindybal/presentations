@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Grid - pozicovaní prvků v buňce gridu</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-gap: 1em;
+            grid-template-columns: auto auto 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto auto 1fr 1fr 1fr 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .title-justify {
+            grid-column: 1 / span 6;
+            grid-row: 1;
+            text-align: center;
+            font-size: 1.4em;
+            padding: 0 1em;
+            margin: 0;
+        }
+
+        .sub-title-justify {
+            grid-row: 2;
+            text-align: center;
+            font-size: 1.4em;
+            padding: .5em 0;
+            margin: 0;
+        }
+
+        .title-align {
+            grid-row: 1 / span 6;
+            grid-column: 1;
+            width: 1px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            align-self: center;
+            font-size: 1.4em;
+            padding: 0 1em;
+            margin: 0;
+        }
+
+        .sub-title-align {
+            grid-column: 2;
+            width: 1px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            align-self: center;
+            font-size: 1.4em;
+            padding: 0 .5em;
+            margin: 0;
+        }
+            
+        .item {
+            grid-area: article;
+            padding: 1em;
+            background-color: deepskyblue;
+        }
+
+        .item:nth-of-type(1) {
+            grid-row: 3;
+            grid-column: 3;
+        }
+
+        .item:nth-of-type(2) {
+            grid-row: 3;
+            grid-column: 4;
+        }
+
+        .item:nth-of-type(3) {
+            grid-row: 3;
+            grid-column: 5;
+        }
+
+        .item:nth-of-type(4) {
+            grid-row: 3;
+            grid-column: 6;
+        }
+
+        .item:nth-of-type(5) {
+            grid-row: 4;
+            grid-column: 3;
+        }
+
+        .item:nth-of-type(6) {
+            grid-row: 4;
+            grid-column: 4;
+        }
+
+        .item:nth-of-type(7) {
+            grid-row: 4;
+            grid-column: 5;
+        }
+
+        .item:nth-of-type(8) {
+            grid-row: 4;
+            grid-column: 6;
+        }
+
+        .item:nth-of-type(9) {
+            grid-row: 5;
+            grid-column: 3;
+        }
+
+        .item:nth-of-type(10) {
+            grid-row: 5;
+            grid-column: 4;
+        }
+
+        .item:nth-of-type(11) {
+            grid-row: 5;
+            grid-column: 5;
+        }
+
+        .item:nth-of-type(12) {
+            grid-row: 5;
+            grid-column: 6;
+        }
+
+        .item:nth-of-type(13) {
+            grid-row: 6;
+            grid-column: 3;
+        }
+
+        .item:nth-of-type(14) {
+            grid-row: 6;
+            grid-column: 4;
+        }
+
+        .item:nth-of-type(15) {
+            grid-row: 6;
+            grid-column: 5;
+        }
+
+        .item:nth-of-type(16) {
+            grid-row: 6;
+            grid-column: 6;
+        }
+
+        .align-start {
+            align-self: start;
+        }
+
+        .align-end {
+            align-self: end;
+        }
+
+        .align-center {
+            align-self: center;
+        }
+
+        .align-stretch {
+            align-self: stretch;
+        }
+
+        .justify-start {
+            justify-self: start;
+        }
+
+        .justify-end {
+            justify-self: end;
+        }
+
+        .justify-center {
+            justify-self: center;
+        }
+
+        .justify-stretch {
+            justify-self: stretch;
+        }
+    </style>
+</head>
+<body class="sample sample--in-iframe">
+    <div id="sample-html">
+        <div class="container">
+            <h2 class="title-align">align self</h2>
+            <h3 class="sub-title-align">start</h3>
+            <h3 class="sub-title-align">center</h3>
+            <h3 class="sub-title-align">end</h3>
+            <h3 class="sub-title-align">stretch</h3>
+
+            <h2 class="title-justify">justify self</h2>
+            <h3 class="sub-title-justify"></h3>
+            <h3 class="sub-title-justify">start</h3>
+            <h3 class="sub-title-justify">center</h3>
+            <h3 class="sub-title-justify">end</h3>
+            <h3 class="sub-title-justify">stretch</h3>
+
+            <div class="item align-start justify-start">item text</div>
+            <div class="item align-start justify-center">item text</div>
+            <div class="item align-start justify-end">item text</div>
+            <div class="item align-start justify-stretch">item text</div>
+
+            <div class="item align-center justify-start">item text</div>
+            <div class="item align-center justify-center">item text</div>
+            <div class="item align-center justify-end">item text</div>
+            <div class="item align-center justify-stretch">item text</div>
+
+            <div class="item align-end justify-start">item text</div>
+            <div class="item align-end justify-center">item text</div>
+            <div class="item align-end justify-end">item text</div>
+            <div class="item align-end justify-stretch">item text</div>
+
+            <div class="item align-stretch justify-start">item text</div>
+            <div class="item align-stretch justify-center">item text</div>
+            <div class="item align-stretch justify-end">item text</div>
+            <div class="item align-stretch justify-stretch">item text</div>
+
+        </div>
+    </div>
+    <script src="../sample.js"></script>
+</body>
+</html>
