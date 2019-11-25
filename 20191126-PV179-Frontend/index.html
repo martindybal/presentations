@@ -1,0 +1,375 @@
+﻿<html>
+
+<head>
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/white.css">
+    <link rel="stylesheet" href="../reveal/lib/css/highlightjs-vs.css" />
+    <link href="plugins/code-sample/code-sample.css" rel="stylesheet" />
+
+    <style>
+
+        .side-by-side {
+            display: flex;
+            justify-content: center;
+        }
+
+        .reveal pre {
+            display: inline-block;
+        }
+
+            .reveal pre.inline {
+                line-height: 100%;
+                height: 100%;
+                vertical-align: middle;
+                font-size: .7em;
+            }
+
+        .divider {
+            list-style-type: none;
+            list-style-position: inside;
+            border-bottom: 1px solid gray !important;
+            margin: .5em 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <h1>Responzivní web design</h1>
+                    <h2>Martin Dybal</h2>
+                    <a href="https://www.dybal.it/presentations/20191126-PV179-Frontend/#/">
+                        <img src="images/qr.svg" /> <br />
+                        https://www.dybal.it/presentations/20191126-PV179-Frontend/#/
+                    </a>
+                </section>
+                <section>
+                    <h1>O čem to bude?</h1>
+                    <ul>
+                        <li><a href="#what-is-responsive-design">Co je to responzivní web design?</a></li>
+                        <li><a href="#css-layout-2018">CSS Layout 2018</a></li>
+                        <li><a href="#responsive-images">Responzivní obrázky</a></li>
+                        <li><a href="#bootstrap">Bootstrap</a></li>
+                        <li><a href="#structure">Organizace CSS na projektu</a></li>
+                    </ul>
+                </section>
+            </section>
+            <section id="what-is-responsive-design">
+                <section>
+                    <h1>Historie</h1>
+                    <ul>
+                        <li>
+                            Rok 2000
+                            <ul>
+                                <li>
+                                    Rozlišení 800x600
+                                    <ul>
+                                        <li>Machři 1024x768</li>
+                                    </ul>
+                                <li>Weby s pevnou šířkou</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Rok 2006
+                            <ul>
+                                <li>
+                                    Responsivita začíná<br />
+                                    <img src="images/slides/history-steave-jobs.jpg" />
+                                </li>
+                                <li>Technologie na to nejsou připravené</li>
+                                <li>Vznikají první mobilní web m.*</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section data-background-iframe="https://www.screensizemap.com" data-background-interactive>
+                </section>
+                <section>
+                    <h1>Responzivní web</h1>
+                    <blockquote>Web, který na změny prostředí reaguje rychle a jednoznačně</blockquote>
+                    <a href="https://www.riganti.cz" target="_blank"><img src="images/slides/responsive-design1.jpg" /></a>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h1>Terminologie</h1>
+                    <ul>
+                        <li class="fragment">
+                            Responzivní design
+                            <ul>
+                                <li>Design který se přizpůsouje</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Adaptivní design
+                            <ul>
+                                <li>Nad množina responzivního designu</li>
+                                <li>zahrnuje i responzivní obrázky, rychlost načítání, změny ovládání</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Breakpoint
+                            <ul>
+                                <li>Místo kde se mění layout stránky</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            viewport
+                            <ul>
+                                <li>Plocha, do které se web vykresluje</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <aside class="notes">
+                        Adaptivní - úvest například poslání jiného obrázku pro Kindle nebo tisk.
+                        Jiný obrázek pro landscape a portrait
+                        Ovládání dotykem vs ovládání myšší
+                    </aside>
+                </section>
+                <section>
+                    <h1><s>Responzivní</s> webdesign</h1>
+                    <blockquote>Webdesign = Responzivní webdesign= Adaptivní webdesign</blockquote>
+                </section>
+                <section>
+                    <blockquote>
+                        Když selže výtah, je nepoužitelný. Když selžou jezdící schody, jsou z nich schody.
+                    </blockquote>
+
+                    <blockquote>
+                        Přístupný web se lépe používá všem návštěvníkům.
+                    </blockquote>
+
+                    <aside class="notes">
+                        Web který je závislý na javascriptu, může velmi snadno selhat.
+                        Web má být postavený na kvalitním HTML, stylován pomocí CSS, JS přidává jen interakci, ne
+                        obsah!
+                        <ul>
+                            <li>Google, jakš tak</li>
+                            <li>Seznam, Facebook nic</li>
+                        </ul>
+                        Přístupný web
+                    </aside>
+                </section>
+            </section>
+            <section id="css-layout-2018">
+                <section>
+                    <h1>Responsivní design prakticky</h1>
+                </section>
+                <section>
+                    <h1>media query</h1>
+                    <p>css se aplikují pouze, pokud je spněna podmínka</p>
+                    <table>
+                        <tr>
+                            <td>SCSS:</td>
+                            <td>
+                                <pre><code class="css" data-trim data-noescape>
+.about{
+    width: 20vw;
+
+    @include res-max-mobile {
+        width: 100vw;
+    }
+}</code></pre>
+                            </td>
+                            <td>
+                                <pre><code class="css" data-trim data-noescape>
+$width-mobile: 480px;
+
+@mixin res-max-mobile {
+    @media only screen and (max-width: $width-mobile) {
+        @content;
+    }
+}</code></pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CSS:</td>
+                            <td>
+                                <pre><code class="css" data-trim data-noescape>
+.about{
+    width: 20vw;
+}
+@media only screen and (max-width: 480px) {
+    .about{
+        width: 100vw;
+    }
+}</code></pre>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section id="css-layout">
+                <section>
+                    <h1><a target="_blank" href="https://www.dybal.it/presentations/20181211-Frontendisti-css-layout/#/introduction">CSS Layout 2018</a></h1>
+                </section>
+            </section>
+            <section id="responsive-images">
+                <section>
+                    <h1><a target="_blank" href="https://www.dybal.it/presentations/responsive-images/#/">Responsivní obrázky</a></h1>
+                </section>
+            </section>
+            <section id="bootstrap">
+                <section>
+                    <h1><a target="_blank" href="https://getbootstrap.com">Bootstrap</a></h1>
+
+                    <blockquote>Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</blockquote>
+
+                </section>
+                <section>
+                    <h1><a target="_blank" href="https://getbootstrap.com">Bootstrap</a></h1>
+                    <ul>
+                        <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/layout/overview/">Layout</a></li>
+                        <li>
+                            <a target="_blank" href="https://getbootstrap.com/docs/4.1/components/">Components</a>
+                            <ul>
+                                <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/components/alerts/">Alerts</a></li>
+                                <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/components/modal/">Modal</a></li>
+                                <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/components/carousel/">Carousel</a></li>
+                                <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/components/navbar/">Navbar</a></li>
+                                <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/components/tooltips/">Tooltips</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h1><a target="_blank" href="https://getbootstrap.com">Bootstrap 4.1</a></h1>
+                    <ul>
+                        <li>sass</li>
+                        <li><a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/">CSS reboot</a></li>
+                        <li>Využití flexbox</li>
+                        <li>
+                            <a target="_blank" href="https://getbootstrap.com/docs/4.1/content/typography/#responsive-typography">
+                                Responzivní
+                                typografie
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://getbootstrap.com/docs/4.1/utilities/borders/">
+                                Utility
+                                třídy
+                            </a>
+                        </li>
+                        <li>Podpora IE9+</li>
+                    </ul>
+                </section>
+            </section>
+            <section id="structure">
+                ﻿<section>
+                    <h1>Organizace CSS na projektu</h1>
+                    <ul>
+                        <li><a href="#bem">BEM</a></li>
+                        <li><a href="#utilities">Utility třídy</a></li>
+                        <li><a href="#oocss">OOCSS</a></li>
+                        <li><a href="#atomic-design">Atomický design</a></li>
+                        <li>Naše struktura</li>
+                        <li class="divider"></li>
+                        <li><a href="#design-system">Design system</a></li>
+                        <li>Sass</li>
+                    </ul>
+                </section>
+
+                <section id="bem">
+                    <h1>Blok, Element, Modifikátor (BEM)</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Typ třídy</th>
+                                <th>Způsob pojmenovávání</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Blok</td>
+                                <td>.block</td>
+                            </tr>
+                            <tr>
+                                <td>Element</td>
+                                <td>.block__element</td>
+                            </tr>
+                            <tr>
+                                <td>Modifikátor</td>
+                                <td>.block--modifier</td>
+                            </tr>
+                            <tr>
+                                <td>Modifikátor elementu</td>
+                                <td>.block__element--modifier</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="utilities">
+                    <h1>Utility třídy</h1>
+                    <ul>
+                        <li>Pomocné třídy pro rychlé úpravy UI z HTML</li>
+                        <li><a target="_blank" href="https://getbootstrap.com/docs/4.1/utilities/">Bootstrap</a></li>
+                        <li><a target="_blank" href="https://tachyons.io">Tachyons</a></li>
+                    </ul>
+                </section>
+
+                <section id="oocss">
+                    <h1>OOCSS</h1>
+                    <ul>
+                        <li>Nezávislost vzhledu na struktuře</li>
+                        <li>Nezávislost obsahu na kontejneru</li>
+                        <li>Co nejnižší specifičnost</li>
+                        <li>Vývoj zaměřený na komponenty, znovupoužitelnost</li>
+                        <li>Princip prefixování: objekt, element, modifikátor</li>
+                    </ul>
+                </section>
+
+                <section id="atomic-design">
+                    <h1>Atomický design</h1>
+                    <ul>
+                        <li>Atomy (například tlačítko)</li>
+                        <li>Molekuly (např. tlačítko s inputem spojené do vyhledávacího pole)</li>
+                        <li>Organizmy (např. hlavička stránky)</li>
+                        <li>Šablony (např. šablona detailu produktu)</li>
+                        <li>Stránky (např. stránka konkrétního produktu)</li>
+                    </ul>
+                </section>
+
+                <section id="design-system">
+                    <h1>Design system</h1>
+                    <ul>
+                        <li>Co je a co není design systém?</li>
+                        <li>Jaké jsou výhody použití design systému?</li>
+                        <li>Kdy je vhodné použít Design system?</li>
+                        <li><a target="_blank" href="https://adele.uxpin.com">Adele UX</a></li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h1>Responzivní web design</h1>
+                <h2>Martin Dybal</h2>
+                <ul>
+                    <li>
+                        Zdroje
+                        <ul>
+                            <li><a target="_blank" href="https://abookapart.com/products/going-responsive">Going responsive, Karen McGrane</a></li>
+                            <li><a target="_blank" href="https://abookapart.com/products/the-new-css-layout">The New CSS Layout, Rachel Andrew</a></li>
+                            <li><a target="_blank" href="https://www.vzhurudolu.cz/kniha-responzivni-design">Vzhůru do (responziv­ního) webdesignu, Martin Michálek</a></li>
+                            <li><a target="_blank" href="https://abookapart.com/products/image-performance">image performance, Mat Marquis</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+    <script src="../reveal/plugin/markdown/marked.js"></script>
+    <script src="../reveal/plugin/markdown/markdown.js"></script>
+    <script src="../reveal/plugin/highlight/highlight.js"></script>
+    <script src="../reveal/plugin/notes/notes.js"></script>
+    <script src="../reveal-initialize.js"></script>
+    <script src="plugins/code-sample/code-sample.js"></script>
+</body>
+
+</html>
